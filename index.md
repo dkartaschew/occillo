@@ -36,11 +36,12 @@ showDivs(slideIndex);
 
 ### Binary Releases
 
-There are currently no binary releases available. Current source code can be downloaded here: 
+There are currently no binary releases available. Current source code can be downloaded here: https://github.com/dkartaschew/occillo
 
 ## Support and Discussion Boards
 
 Support and Discussion Boards can be found on the github project page located here:
+https://github.com/dkartaschew/occillo/issues
 
 ## Requirements
 
