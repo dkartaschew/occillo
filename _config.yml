@@ -3,7 +3,7 @@ title: Occillo
 email: chewy509@mailcity.com
 description: >
   Occillo, a breakout style arcade game
-baseurl: "" 
+baseurl: "/occillo" 
 url: "https://dkartaschew.github.io"
 github_username:  dkartaschew
 
