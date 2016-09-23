@@ -1,0 +1,13 @@
+# Site settings
+title: Occillo
+email: chewy509@mailcity.com
+description: >
+  Occillo, a breakout style arcade game
+baseurl: "" 
+url: "http://localhost:4000"
+github_username:  dkartaschew
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
