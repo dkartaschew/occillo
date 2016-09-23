@@ -18,6 +18,10 @@ Makefile.in
 /stamp-h1
 /config
 
+/config.h
+/config.log
+/config.status
+
 # Additional artefacts.
 Makefile
 /docs/
