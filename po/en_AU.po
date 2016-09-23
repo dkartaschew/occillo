@@ -1,0 +1,155 @@
+# Occillo Language POT file.
+# Copyright (C) 2105 Darran Kartaschew
+# This file is distributed under the same license as the Occillo package.
+# Darran Kartaschew, 2015, chewy509@mailcity.com.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: occillo 1.0.0\n"
+"Report-Msgid-Bugs-To: chewy509@mailcity.com\n"
+"POT-Creation-Date: 2016-09-17 16:38+1000\n"
+"PO-Revision-Date: 2016-08-14 14:00+1000\n"
+"Last-Translator: \n"
+"Language-Team: Occillo Development\n"
+"Language: en_AU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.8\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: /home/darran/git/occillo/game/level1.txt:1
+msgid "Level One"
+msgstr ""
+
+#: /home/darran/git/occillo/game/level2.txt:1
+msgid "Level Two"
+msgstr ""
+
+#: /home/darran/git/occillo/game/level3.txt:1
+msgid "Level Three"
+msgstr ""
+
+#: src/main.cc:152
+msgid "Configuration File "
+msgstr "Configuration File "
+
+#: src/main.cc:154
+msgid "Data directory is "
+msgstr "Data directory is "
+
+#: src/main.cc:155
+msgid "Game definition file is "
+msgstr "Game definition file is "
+
+#: src/main.cc:160
+msgid "Unable to locate game configuration, exiting application"
+msgstr "Unable to locate game configuration, exiting application"
+
+#: src/main.cc:168
+msgid "Failed to initialize, exiting application"
+msgstr "Failed to initialize, exiting application"
+
+#: src/game/Level.cc:480
+#, c-format
+msgid "Lives : %d"
+msgstr "Lives : %d"
+
+#: src/game/Level.cc:487
+#, c-format
+msgid "Score: %08d"
+msgstr "Score: %08d"
+
+#: src/game/Level.cc:534
+msgid "Bump!"
+msgstr "Bump!"
+
+#: src/game/Level.cc:544 src/game/EndGame.cc:58
+msgid "Game Over"
+msgstr "Game Over"
+
+#: src/game/Level.cc:866 src/game/Level.cc:882
+msgid "+1 Life"
+msgstr "+1 Life"
+
+#: src/game/EndGame.cc:52
+msgid "OK"
+msgstr "OK"
+
+#: src/game/EndGame.cc:63
+#, c-format
+msgid "Score: %d"
+msgstr "Score: %d"
+
+#: src/game/EndGame.cc:70
+msgid "Player Name:"
+msgstr "Player Name:"
+
+#: src/game/EndGame.cc:83
+msgid "Sorry, need to do better next time!"
+msgstr "Sorry, need to do better next time!"
+
+#: src/menu/MainMenu.cc:67
+msgid "Play"
+msgstr "Play"
+
+#: src/menu/MainMenu.cc:73 src/menu/HiScoreMenu.cc:49
+msgid "High Scores"
+msgstr "High Scores"
+
+#: src/menu/MainMenu.cc:79 src/menu/OptionsMenu.cc:54
+msgid "Options"
+msgstr "Options"
+
+#: src/menu/MainMenu.cc:85 src/menu/CreditsMenu.cc:47
+msgid "Credits"
+msgstr "Credits"
+
+#: src/menu/MainMenu.cc:91
+msgid "Quit"
+msgstr "Quit"
+
+#: src/menu/CreditsMenu.cc:66
+msgid "Dedicated to"
+msgstr "Dedicated to"
+
+#: src/menu/CreditsMenu.cc:67
+msgid "Elin, Isaac and Gabriel"
+msgstr "Elin, Isaac and Gabriel"
+
+#: src/menu/CreditsMenu.cc:68
+msgid "Game Design and Programming"
+msgstr "Game Design and Programming"
+
+#: src/menu/CreditsMenu.cc:69
+msgid "Darran Kartaschew"
+msgstr "Darran Kartaschew"
+
+#: src/menu/CreditsMenu.cc:73 src/menu/HiScoreMenu.cc:64
+#: src/menu/OptionsMenu.cc:139
+msgid "Return"
+msgstr "Return"
+
+#: src/menu/OptionsMenu.cc:59
+msgid "Screen Resolution"
+msgstr "Screen Resolution"
+
+#: src/menu/OptionsMenu.cc:60
+msgid "Full Screen"
+msgstr "Full Screen"
+
+#: src/menu/OptionsMenu.cc:61
+msgid "Effects Volume"
+msgstr "Effects Volume"
+
+#: src/menu/OptionsMenu.cc:62
+msgid "Music Volume"
+msgstr "Music Volume"
+
+#: src/menu/OptionsMenu.cc:132
+msgid "Apply"
+msgstr "Apply"
+
+#: src/ui/UIText.cc:33
+msgid "_"
+msgstr "_"

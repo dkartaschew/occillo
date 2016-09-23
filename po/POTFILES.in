@@ -1,0 +1,34 @@
+# Data files.
+game/level1.txt.h
+game/level2.txt.h
+game/level3.txt.h
+game/level4.txt.h
+game/level5.txt.h
+game/level6.txt.h
+game/level7.txt.h
+game/level8.txt.h
+game/level9.txt.h
+game/level10.txt.h
+game/level11.txt.h
+
+# List of source files which contain translatable strings.
+src/main.cc
+src/GameConfiguration.cc
+src/Configuration.cc
+src/game/Brick.cc
+src/game/Level.cc
+src/game/EndGame.cc
+src/menu/MainMenu.cc
+src/menu/CreditsMenu.cc
+src/menu/HiScoreMenu.cc
+src/menu/OptionsMenu.cc
+src/ui/UIText.cc
+src/ui/UIButton.cc
+src/ui/UICursor.cc
+src/ui/UILabel.cc
+src/ui/UIWidget.cc
+src/util/Display.cc
+src/util/Texture.cc
+src/util/TextureRepository.cc
+
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Occillo
+Comment=A breakout style arcade game.
+Keywords=Game;ArcadeGame;
+Exec=occillo
+Icon=occillo
+Type=Application
+Categories=Game;ArcadeGame;

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="12.5.1" version="12.5.1" Modules="simple" RootPath="." Language="en" Id="{523F8CDA-40B2-476E-AB7F-F8A6CED375A6}">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="ALLUSERS" Value="1"/>
+    <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
+    <ROW Property="ARPPRODUCTICON" Value="occillo.exe" Type="8"/>
+    <ROW Property="Manufacturer" Value="Occillo Development Team"/>
+    <ROW Property="ProductCode" Value="1033:{472CBA1E-A4A7-4B2D-A6BD-F02BB3559E07} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="Occillo"/>
+    <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{41C3FC52-8A20-4590-8EA2-784EEC99507D}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT" MultiBuildValue="DefaultBuild:Windows 9x/ME/NT/2000/XP/Vista/Windows 7/Windows 8 x86/Windows 8.1 x86/Windows 10 x86" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT64" MultiBuildValue="DefaultBuild:Windows XP x64, Windows XP x64 Service Pack 1, Windows XP x64 Service Pack 2, Windows Server 2003 x64, Windows Server 2003 x64 Service Pack 1, Windows Server 2003 x64 Service Pack 2, Windows Vista x64, Windows Vista x64 Service Pack 1, Windows Vista x64 Service Pack 2, Windows Server 2008 x64, Windows Server 2008 R2 x64, Windows Server 2008 R2 x64 Service Pack 1, Windows Server 2012 x64, Windows Server 2012 R2 x64" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT64Display" MultiBuildValue="DefaultBuild:Windows XP x64, Windows Server 2003 x64, Windows Vista x64, Windows Server 2008 x64, Windows Server 2008 R2 x64, Windows Server 2012 x64, Windows Server 2012 R2 x64" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNTDisplay" MultiBuildValue="DefaultBuild:32 bit Operating Systems" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="ProgramMenuFolder" Directory_Parent="TARGETDIR" DefaultDir="PROGRA~1|ProgramMenuFolder" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="fonts_Dir" Directory_Parent="APPDIR" DefaultDir="fonts"/>
+    <ROW Directory="game_Dir" Directory_Parent="APPDIR" DefaultDir="game"/>
+    <ROW Directory="images_Dir" Directory_Parent="APPDIR" DefaultDir="images"/>
+    <ROW Directory="music_Dir" Directory_Parent="APPDIR" DefaultDir="music"/>
+    <ROW Directory="po_Dir" Directory_Parent="APPDIR" DefaultDir="po"/>
+    <ROW Directory="sounds_Dir" Directory_Parent="APPDIR" DefaultDir="sounds"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="COPYING" ComponentId="{E173E284-EBA8-4D94-849C-BBF80AFA7219}" Directory_="music_Dir" Attributes="0" KeyPath="COPYING" Type="0"/>
+    <ROW Component="Makefile" ComponentId="{BD0D6B6F-9783-4220-AA41-72AB63AEFC8C}" Directory_="fonts_Dir" Attributes="0" KeyPath="ubuntufontlicence1.0.txt" Type="0"/>
+    <ROW Component="ProductInformation" ComponentId="{15E38D77-974F-4C0B-AB27-368CE519571B}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
+    <ROW Component="SDL2.dll" ComponentId="{76078093-17E0-460D-A2A5-6EE960EF0C86}" Directory_="APPDIR" Attributes="256" KeyPath="SDL2.dll"/>
+    <ROW Component="SDL2_image.dll" ComponentId="{BA6BE593-6DC3-4548-ADB3-F3A8E17EC399}" Directory_="APPDIR" Attributes="256" KeyPath="SDL2_image.dll"/>
+    <ROW Component="SDL2_mixer.dll" ComponentId="{D64031E6-322B-4859-95E5-4F03FF235E04}" Directory_="APPDIR" Attributes="256" KeyPath="SDL2_mixer.dll"/>
+    <ROW Component="SDL2_ttf.dll" ComponentId="{2BE40801-E48D-457D-B1BF-9E091B2FF0D4}" Directory_="APPDIR" Attributes="256" KeyPath="SDL2_ttf.dll"/>
+    <ROW Component="background.png" ComponentId="{5605DFE4-AF26-4B55-93A3-245860E2F89B}" Directory_="images_Dir" Attributes="0" KeyPath="background.png" Type="0"/>
+    <ROW Component="boldquot.sed" ComponentId="{59F2F7F1-E1A9-4F33-8747-CB9718C55D06}" Directory_="po_Dir" Attributes="0" KeyPath="da.mo" Type="0"/>
+    <ROW Component="bomb.ogg" ComponentId="{ECF3CAEC-F1FA-4987-8094-E9F02DAEE367}" Directory_="sounds_Dir" Attributes="0" KeyPath="bomb.ogg" Type="0"/>
+    <ROW Component="credits.txt" ComponentId="{180C89AF-E70E-4B96-BCF3-F61A4453EAD6}" Directory_="game_Dir" Attributes="0" KeyPath="credits.txt" Type="0"/>
+    <ROW Component="libFLAC6.dll" ComponentId="{55B40111-FCAF-4ECA-B4BF-C7300F3D538C}" Directory_="APPDIR" Attributes="256" KeyPath="libFLAC6.dll"/>
+    <ROW Component="libFLAC8.dll" ComponentId="{3FA129C0-E73C-47C1-BD6B-2AB11C2DE398}" Directory_="APPDIR" Attributes="256" KeyPath="libFLAC8.dll"/>
+    <ROW Component="libbz21.dll" ComponentId="{D7C81C9D-74FA-4234-BA9B-873FF61B5363}" Directory_="APPDIR" Attributes="256" KeyPath="libbz21.dll"/>
+    <ROW Component="libcairo2.dll" ComponentId="{89778004-B599-4F97-8A0D-41B1C0E2122A}" Directory_="APPDIR" Attributes="256" KeyPath="libcairo2.dll"/>
+    <ROW Component="libcroco0.63.dll" ComponentId="{12F91BD4-7DC9-48E4-B07D-9D8728B01E5A}" Directory_="APPDIR" Attributes="256" KeyPath="libcroco0.63.dll"/>
+    <ROW Component="libexpat1.dll" ComponentId="{39639D12-A367-4F24-985F-0266B3C1BEE4}" Directory_="APPDIR" Attributes="256" KeyPath="libexpat1.dll"/>
+    <ROW Component="libffi6.dll" ComponentId="{F2C0BE2C-5170-49AF-BFCD-36B93A53C1E5}" Directory_="APPDIR" Attributes="256" KeyPath="libffi6.dll"/>
+    <ROW Component="libfluidsynth1.dll" ComponentId="{E46A0B80-EED3-4F3D-889F-73E5E466ED03}" Directory_="APPDIR" Attributes="256" KeyPath="libfluidsynth1.dll"/>
+    <ROW Component="libfontconfig1.dll" ComponentId="{F4E36FDB-5296-445C-8A3E-EC3AEF8BB60C}" Directory_="APPDIR" Attributes="256" KeyPath="libfontconfig1.dll"/>
+    <ROW Component="libfreetype6.dll" ComponentId="{C615E919-3C6B-4826-A7EB-DB083828750C}" Directory_="APPDIR" Attributes="256" KeyPath="libfreetype6.dll"/>
+    <ROW Component="libgcc_s_seh1.dll" ComponentId="{78518314-F70D-41F5-99A7-41B899063719}" Directory_="APPDIR" Attributes="256" KeyPath="libgcc_s_seh1.dll"/>
+    <ROW Component="libgdk_pixbuf2.00.dll" ComponentId="{8613BE88-19A0-4C6A-988D-170EFF862B59}" Directory_="APPDIR" Attributes="256" KeyPath="libgdk_pixbuf2.00.dll"/>
+    <ROW Component="libgio2.00.dll" ComponentId="{2CCE44DD-99B6-4C25-B1F7-FCCC0EFFACFA}" Directory_="APPDIR" Attributes="256" KeyPath="libgio2.00.dll"/>
+    <ROW Component="libglib2.00.dll" ComponentId="{65CD3621-EB7A-4836-886F-F7E5DECCFFC5}" Directory_="APPDIR" Attributes="256" KeyPath="libglib2.00.dll"/>
+    <ROW Component="libgmodule2.00.dll" ComponentId="{BB777514-453A-41DC-A257-35BECFB14069}" Directory_="APPDIR" Attributes="256" KeyPath="libgmodule2.00.dll"/>
+    <ROW Component="libgobject2.00.dll" ComponentId="{27DD4967-86CE-4544-A8D4-0FCE81A6641B}" Directory_="APPDIR" Attributes="256" KeyPath="libgobject2.00.dll"/>
+    <ROW Component="libharfbuzz0.dll" ComponentId="{6AE2344F-BAA8-4008-AFB6-9CA854FD5687}" Directory_="APPDIR" Attributes="256" KeyPath="libharfbuzz0.dll"/>
+    <ROW Component="libiconv2.dll" ComponentId="{D85587F6-B77F-4D42-9FC9-01CEA15FCFD4}" Directory_="APPDIR" Attributes="256" KeyPath="libiconv2.dll"/>
+    <ROW Component="libintl8.dll" ComponentId="{DB63EA10-0EAF-4489-9D18-5B760B615EC5}" Directory_="APPDIR" Attributes="256" KeyPath="libintl8.dll"/>
+    <ROW Component="libjpeg8.dll" ComponentId="{3E8E0B62-B7A6-44A4-A301-DF3F220B7A8F}" Directory_="APPDIR" Attributes="256" KeyPath="libjpeg8.dll"/>
+    <ROW Component="liblzma5.dll" ComponentId="{EA027F3F-7A98-457F-AB9C-FFCD1B28FFE5}" Directory_="APPDIR" Attributes="256" KeyPath="liblzma5.dll"/>
+    <ROW Component="liblzo22.dll" ComponentId="{AD95830F-6B69-4530-AD9E-E49ABEBD97FE}" Directory_="APPDIR" Attributes="256" KeyPath="liblzo22.dll"/>
+    <ROW Component="libmodplug1.dll" ComponentId="{995449C7-1544-4027-A514-4F542887EA91}" Directory_="APPDIR" Attributes="256" KeyPath="libmodplug1.dll"/>
+    <ROW Component="libogg0.dll" ComponentId="{8930640A-CCD0-4EB0-8326-9E3ACF9B16F0}" Directory_="APPDIR" Attributes="256" KeyPath="libogg0.dll"/>
+    <ROW Component="libpango1.00.dll" ComponentId="{84BFC990-0A08-4224-A215-1F6CAD8697A8}" Directory_="APPDIR" Attributes="256" KeyPath="libpango1.00.dll"/>
+    <ROW Component="libpangocairo1.00.dll" ComponentId="{C6479C41-A0E7-4F81-BC06-CE307C3EB5FA}" Directory_="APPDIR" Attributes="256" KeyPath="libpangocairo1.00.dll"/>
+    <ROW Component="libpangoft21.00.dll" ComponentId="{022460CD-0A62-45CA-A094-9E38CDF9C3FE}" Directory_="APPDIR" Attributes="256" KeyPath="libpangoft21.00.dll"/>
+    <ROW Component="libpangowin321.00.dll" ComponentId="{16546C92-C073-4F38-9F63-B72A7D91F980}" Directory_="APPDIR" Attributes="256" KeyPath="libpangowin321.00.dll"/>
+    <ROW Component="libpixman10.dll" ComponentId="{79CCE187-8944-4058-B646-F06A020FB875}" Directory_="APPDIR" Attributes="256" KeyPath="libpixman10.dll"/>
+    <ROW Component="libpng1616.dll" ComponentId="{E51C7B0C-8A73-4014-9303-428394E875CC}" Directory_="APPDIR" Attributes="256" KeyPath="libpng1616.dll"/>
+    <ROW Component="libportaudio2.dll" ComponentId="{C425C85C-29D4-44F6-A866-706EC75CDBA1}" Directory_="APPDIR" Attributes="256" KeyPath="libportaudio2.dll"/>
+    <ROW Component="librsvg22.dll" ComponentId="{F1E2A38C-F6EF-407B-AB9D-8CEFA5778D4B}" Directory_="APPDIR" Attributes="256" KeyPath="librsvg22.dll"/>
+    <ROW Component="libsndfile1.dll" ComponentId="{B7B9364C-DFC1-47B3-9316-0A7B531F5B71}" Directory_="APPDIR" Attributes="256" KeyPath="libsndfile1.dll"/>
+    <ROW Component="libspeex1.dll" ComponentId="{627697B9-0E02-46F7-8842-6D6D8F9DEB49}" Directory_="APPDIR" Attributes="256" KeyPath="libspeex1.dll"/>
+    <ROW Component="libstdc6.dll" ComponentId="{722CA5D2-59A3-43F7-A8BE-728BF257A381}" Directory_="APPDIR" Attributes="256" KeyPath="libstdc6.dll"/>
+    <ROW Component="libtiff5.dll" ComponentId="{72F7B823-49D9-40A8-BC8A-D803CB86069B}" Directory_="APPDIR" Attributes="256" KeyPath="libtiff5.dll"/>
+    <ROW Component="libvorbis0.dll" ComponentId="{7A3C2E77-BA58-4686-B56A-C532A83AE086}" Directory_="APPDIR" Attributes="256" KeyPath="libvorbis0.dll"/>
+    <ROW Component="libvorbisenc2.dll" ComponentId="{BDF454D4-9E6D-45EB-B95B-F905ACB5DABF}" Directory_="APPDIR" Attributes="256" KeyPath="libvorbisenc2.dll"/>
+    <ROW Component="libvorbisfile3.dll" ComponentId="{0627F0E5-07BC-408A-9421-35DD9AF4A986}" Directory_="APPDIR" Attributes="256" KeyPath="libvorbisfile3.dll"/>
+    <ROW Component="libwebp5.dll" ComponentId="{4F051B28-875A-44F6-AF4F-F64B672CC104}" Directory_="APPDIR" Attributes="256" KeyPath="libwebp5.dll"/>
+    <ROW Component="libwinpthread1.dll" ComponentId="{F14F6CB6-F9AF-4BF8-B0AD-F705CB4A4F49}" Directory_="APPDIR" Attributes="256" KeyPath="libwinpthread1.dll"/>
+    <ROW Component="libxml22.dll" ComponentId="{132C5952-6FD7-4EAA-8574-343117CF17DE}" Directory_="APPDIR" Attributes="256" KeyPath="libxml22.dll"/>
+    <ROW Component="occillo.exe" ComponentId="{A56B5CEA-98FE-4A77-B7AE-DD26D9E2D15A}" Directory_="APPDIR" Attributes="256" KeyPath="occillo.exe"/>
+    <ROW Component="smpeg2.dll" ComponentId="{EF8F072C-5FDE-44AB-AFA9-90C57F71C62A}" Directory_="APPDIR" Attributes="256" KeyPath="smpeg2.dll"/>
+    <ROW Component="zlib1.dll" ComponentId="{7F2548F0-C258-4AA9-90E1-B0153151BD7A}" Directory_="APPDIR" Attributes="256" KeyPath="zlib1.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="COPYING Makefile ProductInformation SDL2.dll SDL2_image.dll SDL2_mixer.dll SDL2_ttf.dll background.png boldquot.sed bomb.ogg credits.txt libFLAC6.dll libFLAC8.dll libbz21.dll libcairo2.dll libcroco0.63.dll libexpat1.dll libffi6.dll libfluidsynth1.dll libfontconfig1.dll libfreetype6.dll libgcc_s_seh1.dll libgdk_pixbuf2.00.dll libgio2.00.dll libglib2.00.dll libgmodule2.00.dll libgobject2.00.dll libharfbuzz0.dll libiconv2.dll libintl8.dll libjpeg8.dll liblzma5.dll liblzo22.dll libmodplug1.dll libogg0.dll libpango1.00.dll libpangocairo1.00.dll libpangoft21.00.dll libpangowin321.00.dll libpixman10.dll libpng1616.dll libportaudio2.dll librsvg22.dll libsndfile1.dll libspeex1.dll libstdc6.dll libtiff5.dll libvorbis0.dll libvorbisenc2.dll libvorbisfile3.dll libwebp5.dll libwinpthread1.dll libxml22.dll occillo.exe smpeg2.dll zlib1.dll"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="COPYING" Component_="COPYING" FileName="COPYING" Attributes="0" SourcePath="..\music\COPYING" SelfReg="false" NextFile="pipawalkinthepark.it"/>
+    <ROW File="COPYING_1" Component_="bomb.ogg" FileName="COPYING" Attributes="0" SourcePath="..\sounds\COPYING" SelfReg="false" NextFile="touch.ogg"/>
+    <ROW File="SDL2.dll" Component_="SDL2.dll" FileName="SDL2.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\SDL2.dll" SelfReg="false" NextFile="SDL2_image.dll"/>
+    <ROW File="SDL2_image.dll" Component_="SDL2_image.dll" FileName="SDL2_I~1.DLL|SDL2_image.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\SDL2_image.dll" SelfReg="false" NextFile="SDL2_mixer.dll"/>
+    <ROW File="SDL2_mixer.dll" Component_="SDL2_mixer.dll" FileName="SDL2_M~1.DLL|SDL2_mixer.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\SDL2_mixer.dll" SelfReg="false" NextFile="SDL2_ttf.dll"/>
+    <ROW File="SDL2_ttf.dll" Component_="SDL2_ttf.dll" FileName="SDL2_ttf.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\SDL2_ttf.dll" SelfReg="false" NextFile="smpeg2.dll"/>
+    <ROW File="UbuntuB.ttf" Component_="Makefile" FileName="Ubuntu-B.ttf" Attributes="0" SourcePath="..\fonts\Ubuntu-B.ttf" SelfReg="false" NextFile="ubuntufontlicence1.0.txt"/>
+    <ROW File="UbuntuR.ttf" Component_="Makefile" FileName="Ubuntu-R.ttf" Attributes="0" SourcePath="..\fonts\Ubuntu-R.ttf" SelfReg="false" NextFile="credits.txt"/>
+    <ROW File="background.png" Component_="background.png" FileName="BACKGR~1.PNG|background.png" Attributes="0" SourcePath="..\images\background.png" SelfReg="false" NextFile="ball_silver.svg"/>
+    <ROW File="ball_silver.svg" Component_="background.png" FileName="BALL_S~1.SVG|ball_silver.svg" Attributes="0" SourcePath="..\images\ball_silver.svg" SelfReg="false" NextFile="brick_blue.svg"/>
+    <ROW File="bomb.ogg" Component_="bomb.ogg" FileName="bomb.ogg" Attributes="0" SourcePath="..\sounds\bomb.ogg" SelfReg="false" NextFile="click.ogg"/>
+    <ROW File="brick_blue.svg" Component_="background.png" FileName="BRICK_~1.SVG|brick_blue.svg" Attributes="0" SourcePath="..\images\brick_blue.svg" SelfReg="false" NextFile="brick_dkgrey.svg"/>
+    <ROW File="brick_dkgrey.svg" Component_="background.png" FileName="BRICK_~2.SVG|brick_dkgrey.svg" Attributes="0" SourcePath="..\images\brick_dkgrey.svg" SelfReg="false" NextFile="brick_fixed.svg"/>
+    <ROW File="brick_fixed.svg" Component_="background.png" FileName="BRICK_~3.SVG|brick_fixed.svg" Attributes="0" SourcePath="..\images\brick_fixed.svg" SelfReg="false" NextFile="brick_green.svg"/>
+    <ROW File="brick_green.svg" Component_="background.png" FileName="BRICK_~4.SVG|brick_green.svg" Attributes="0" SourcePath="..\images\brick_green.svg" SelfReg="false" NextFile="brick_grey.svg"/>
+    <ROW File="brick_grey.svg" Component_="background.png" FileName="BRICK_~5.SVG|brick_grey.svg" Attributes="0" SourcePath="..\images\brick_grey.svg" SelfReg="false" NextFile="brick_ltgreen.svg"/>
+    <ROW File="brick_ltgreen.svg" Component_="background.png" FileName="BRICK_~6.SVG|brick_ltgreen.svg" Attributes="0" SourcePath="..\images\brick_ltgreen.svg" SelfReg="false" NextFile="brick_orange.svg"/>
+    <ROW File="brick_orange.svg" Component_="background.png" FileName="BRICK_~7.SVG|brick_orange.svg" Attributes="0" SourcePath="..\images\brick_orange.svg" SelfReg="false" NextFile="brick_purple.svg"/>
+    <ROW File="brick_purple.svg" Component_="background.png" FileName="BRICK_~8.SVG|brick_purple.svg" Attributes="0" SourcePath="..\images\brick_purple.svg" SelfReg="false" NextFile="brick_red.svg"/>
+    <ROW File="brick_red.svg" Component_="background.png" FileName="BRICK_~9.SVG|brick_red.svg" Attributes="0" SourcePath="..\images\brick_red.svg" SelfReg="false" NextFile="brick_template.svg"/>
+    <ROW File="brick_template.svg" Component_="background.png" FileName="BRICK~10.SVG|brick_template.svg" Attributes="0" SourcePath="..\images\brick_template.svg" SelfReg="false" NextFile="brick_yellow.svg"/>
+    <ROW File="brick_yellow.svg" Component_="background.png" FileName="BRICK~11.SVG|brick_yellow.svg" Attributes="0" SourcePath="..\images\brick_yellow.svg" SelfReg="false" NextFile="checkboxactive.svg"/>
+    <ROW File="checkboxactive.svg" Component_="background.png" FileName="CHECKB~1.SVG|checkboxactive.svg" Attributes="0" SourcePath="..\images\checkboxactive.svg" SelfReg="false" NextFile="checkboxinactive.svg"/>
+    <ROW File="checkboxinactive.svg" Component_="background.png" FileName="CHECKB~2.SVG|checkboxinactive.svg" Attributes="0" SourcePath="..\images\checkboxinactive.svg" SelfReg="false" NextFile="occillo.png"/>
+    <ROW File="click.ogg" Component_="bomb.ogg" FileName="click.ogg" Attributes="0" SourcePath="..\sounds\click.ogg" SelfReg="false" NextFile="COPYING_1"/>
+    <ROW File="credits.txt" Component_="credits.txt" FileName="credits.txt" Attributes="0" SourcePath="..\game\credits.txt" SelfReg="false" NextFile="game.ini"/>
+    <ROW File="da.mo" Component_="boldquot.sed" FileName="da.mo" Attributes="0" SourcePath="..\po\da.mo" SelfReg="false" NextFile="en_AU.gmo"/>
+    <ROW File="en_AU.gmo" Component_="boldquot.sed" FileName="en_AU.gmo" Attributes="0" SourcePath="..\po\en_AU.gmo" SelfReg="false" NextFile="en_AU.mo"/>
+    <ROW File="en_AU.mo" Component_="boldquot.sed" FileName="en_AU.mo" Attributes="0" SourcePath="..\po\en_AU.mo" SelfReg="false" NextFile="bomb.ogg"/>
+    <ROW File="game.ini" Component_="credits.txt" FileName="game.ini" Attributes="0" SourcePath="..\game\game.ini" SelfReg="false" NextFile="level1.txt"/>
+    <ROW File="level1.txt" Component_="credits.txt" FileName="level1.txt" Attributes="0" SourcePath="..\game\level1.txt" SelfReg="false" NextFile="level2.txt"/>
+    <ROW File="level10.txt" Component_="credits.txt" FileName="level10.txt" Attributes="0" SourcePath="..\game\level10.txt" SelfReg="false" NextFile="occillo.ico"/>
+    <ROW File="level2.txt" Component_="credits.txt" FileName="level2.txt" Attributes="0" SourcePath="..\game\level2.txt" SelfReg="false" NextFile="background.png"/>
+    <ROW File="level3.txt" Component_="credits.txt" FileName="level3.txt" Attributes="0" SourcePath="..\game\level3.txt" SelfReg="false" NextFile="level4.txt"/>
+    <ROW File="level4.txt" Component_="credits.txt" FileName="level4.txt" Attributes="0" SourcePath="..\game\level4.txt" SelfReg="false" NextFile="level5.txt"/>
+    <ROW File="level5.txt" Component_="credits.txt" FileName="level5.txt" Attributes="0" SourcePath="..\game\level5.txt" SelfReg="false" NextFile="level6.txt"/>
+    <ROW File="level6.txt" Component_="credits.txt" FileName="level6.txt" Attributes="0" SourcePath="..\game\level6.txt" SelfReg="false" NextFile="level7.txt"/>
+    <ROW File="level7.txt" Component_="credits.txt" FileName="level7.txt" Attributes="0" SourcePath="..\game\level7.txt" SelfReg="false" NextFile="level8.txt"/>
+    <ROW File="level8.txt" Component_="credits.txt" FileName="level8.txt" Attributes="0" SourcePath="..\game\level8.txt" SelfReg="false" NextFile="level9.txt"/>
+    <ROW File="level9.txt" Component_="credits.txt" FileName="level9.txt" Attributes="0" SourcePath="..\game\level9.txt" SelfReg="false" NextFile="level10.txt"/>
+    <ROW File="libFLAC6.dll" Component_="libFLAC6.dll" FileName="LIBFLA~1.DLL|libFLAC++-6.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libFLAC++-6.dll" SelfReg="false" NextFile="libFLAC8.dll"/>
+    <ROW File="libFLAC8.dll" Component_="libFLAC8.dll" FileName="LIBFLA~2.DLL|libFLAC-8.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libFLAC-8.dll" SelfReg="false" NextFile="libfluidsynth1.dll"/>
+    <ROW File="libbz21.dll" Component_="libbz21.dll" FileName="libbz2-1.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libbz2-1.dll" SelfReg="false" NextFile="libcairo2.dll"/>
+    <ROW File="libcairo2.dll" Component_="libcairo2.dll" FileName="LIBCAI~1.DLL|libcairo-2.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libcairo-2.dll" SelfReg="false" NextFile="libcroco0.63.dll"/>
+    <ROW File="libcroco0.63.dll" Component_="libcroco0.63.dll" FileName="LIBCRO~1.DLL|libcroco-0.6-3.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libcroco-0.6-3.dll" SelfReg="false" NextFile="libexpat1.dll"/>
+    <ROW File="libexpat1.dll" Component_="libexpat1.dll" FileName="LIBEXP~1.DLL|libexpat-1.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libexpat-1.dll" SelfReg="false" NextFile="libffi6.dll"/>
+    <ROW File="libffi6.dll" Component_="libffi6.dll" FileName="libffi-6.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libffi-6.dll" SelfReg="false" NextFile="libFLAC6.dll"/>
+    <ROW File="libfluidsynth1.dll" Component_="libfluidsynth1.dll" FileName="LIBFLU~1.DLL|libfluidsynth-1.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libfluidsynth-1.dll" SelfReg="false" NextFile="libfontconfig1.dll"/>
+    <ROW File="libfontconfig1.dll" Component_="libfontconfig1.dll" FileName="LIBFON~1.DLL|libfontconfig-1.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libfontconfig-1.dll" SelfReg="false" NextFile="libfreetype6.dll"/>
+    <ROW File="libfreetype6.dll" Component_="libfreetype6.dll" FileName="LIBFRE~1.DLL|libfreetype-6.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libfreetype-6.dll" SelfReg="false" NextFile="libgcc_s_seh1.dll"/>
+    <ROW File="libgcc_s_seh1.dll" Component_="libgcc_s_seh1.dll" FileName="LIBGCC~1.DLL|libgcc_s_seh-1.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libgcc_s_seh-1.dll" SelfReg="false" NextFile="libgdk_pixbuf2.00.dll"/>
+    <ROW File="libgdk_pixbuf2.00.dll" Component_="libgdk_pixbuf2.00.dll" FileName="LIBGDK~1.DLL|libgdk_pixbuf-2.0-0.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libgdk_pixbuf-2.0-0.dll" SelfReg="false" NextFile="libgio2.00.dll"/>
+    <ROW File="libgio2.00.dll" Component_="libgio2.00.dll" FileName="LIBGIO~1.DLL|libgio-2.0-0.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libgio-2.0-0.dll" SelfReg="false" NextFile="libglib2.00.dll"/>
+    <ROW File="libglib2.00.dll" Component_="libglib2.00.dll" FileName="LIBGLI~1.DLL|libglib-2.0-0.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libglib-2.0-0.dll" SelfReg="false" NextFile="libgmodule2.00.dll"/>
+    <ROW File="libgmodule2.00.dll" Component_="libgmodule2.00.dll" FileName="LIBGMO~1.DLL|libgmodule-2.0-0.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libgmodule-2.0-0.dll" SelfReg="false" NextFile="libgobject2.00.dll"/>
+    <ROW File="libgobject2.00.dll" Component_="libgobject2.00.dll" FileName="LIBGOB~1.DLL|libgobject-2.0-0.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libgobject-2.0-0.dll" SelfReg="false" NextFile="libharfbuzz0.dll"/>
+    <ROW File="libharfbuzz0.dll" Component_="libharfbuzz0.dll" FileName="LIBHAR~1.DLL|libharfbuzz-0.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libharfbuzz-0.dll" SelfReg="false" NextFile="libiconv2.dll"/>
+    <ROW File="libiconv2.dll" Component_="libiconv2.dll" FileName="LIBICO~1.DLL|libiconv-2.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libiconv-2.dll" SelfReg="false" NextFile="libintl8.dll"/>
+    <ROW File="libintl8.dll" Component_="libintl8.dll" FileName="LIBINT~1.DLL|libintl-8.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libintl-8.dll" SelfReg="false" NextFile="libjpeg8.dll"/>
+    <ROW File="libjpeg8.dll" Component_="libjpeg8.dll" FileName="LIBJPE~1.DLL|libjpeg-8.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libjpeg-8.dll" SelfReg="false" NextFile="liblzma5.dll"/>
+    <ROW File="liblzma5.dll" Component_="liblzma5.dll" FileName="LIBLZM~1.DLL|liblzma-5.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\liblzma-5.dll" SelfReg="false" NextFile="liblzo22.dll"/>
+    <ROW File="liblzo22.dll" Component_="liblzo22.dll" FileName="LIBLZO~1.DLL|liblzo2-2.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\liblzo2-2.dll" SelfReg="false" NextFile="libmodplug1.dll"/>
+    <ROW File="libmodplug1.dll" Component_="libmodplug1.dll" FileName="LIBMOD~1.DLL|libmodplug-1.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libmodplug-1.dll" SelfReg="false" NextFile="libogg0.dll"/>
+    <ROW File="libogg0.dll" Component_="libogg0.dll" FileName="libogg-0.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libogg-0.dll" SelfReg="false" NextFile="libpango1.00.dll"/>
+    <ROW File="libpango1.00.dll" Component_="libpango1.00.dll" FileName="LIBPAN~1.DLL|libpango-1.0-0.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libpango-1.0-0.dll" SelfReg="false" NextFile="libpangocairo1.00.dll"/>
+    <ROW File="libpangocairo1.00.dll" Component_="libpangocairo1.00.dll" FileName="LIBPAN~2.DLL|libpangocairo-1.0-0.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libpangocairo-1.0-0.dll" SelfReg="false" NextFile="libpangoft21.00.dll"/>
+    <ROW File="libpangoft21.00.dll" Component_="libpangoft21.00.dll" FileName="LIBPAN~3.DLL|libpangoft2-1.0-0.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libpangoft2-1.0-0.dll" SelfReg="false" NextFile="libpangowin321.00.dll"/>
+    <ROW File="libpangowin321.00.dll" Component_="libpangowin321.00.dll" FileName="LIBPAN~4.DLL|libpangowin32-1.0-0.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libpangowin32-1.0-0.dll" SelfReg="false" NextFile="libpixman10.dll"/>
+    <ROW File="libpixman10.dll" Component_="libpixman10.dll" FileName="LIBPIX~1.DLL|libpixman-1-0.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libpixman-1-0.dll" SelfReg="false" NextFile="libpng1616.dll"/>
+    <ROW File="libpng1616.dll" Component_="libpng1616.dll" FileName="LIBPNG~1.DLL|libpng16-16.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libpng16-16.dll" SelfReg="false" NextFile="librsvg22.dll"/>
+    <ROW File="libportaudio2.dll" Component_="libportaudio2.dll" FileName="LIBPOR~1.DLL|libportaudio-2.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libportaudio-2.dll" SelfReg="false" NextFile="level3.txt"/>
+    <ROW File="librsvg22.dll" Component_="librsvg22.dll" FileName="LIBRSV~1.DLL|librsvg-2-2.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\librsvg-2-2.dll" SelfReg="false" NextFile="libsndfile1.dll"/>
+    <ROW File="libsndfile1.dll" Component_="libsndfile1.dll" FileName="LIBSND~1.DLL|libsndfile-1.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libsndfile-1.dll" SelfReg="false" NextFile="libspeex1.dll"/>
+    <ROW File="libspeex1.dll" Component_="libspeex1.dll" FileName="LIBSPE~1.DLL|libspeex-1.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libspeex-1.dll" SelfReg="false" NextFile="libstdc6.dll"/>
+    <ROW File="libstdc6.dll" Component_="libstdc6.dll" FileName="LIBSTD~1.DLL|libstdc++-6.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libstdc++-6.dll" SelfReg="false" NextFile="libtiff5.dll"/>
+    <ROW File="libtiff5.dll" Component_="libtiff5.dll" FileName="LIBTIF~1.DLL|libtiff-5.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libtiff-5.dll" SelfReg="false" NextFile="libvorbis0.dll"/>
+    <ROW File="libvorbis0.dll" Component_="libvorbis0.dll" FileName="LIBVOR~1.DLL|libvorbis-0.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libvorbis-0.dll" SelfReg="false" NextFile="libvorbisenc2.dll"/>
+    <ROW File="libvorbisenc2.dll" Component_="libvorbisenc2.dll" FileName="LIBVOR~2.DLL|libvorbisenc-2.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libvorbisenc-2.dll" SelfReg="false" NextFile="libvorbisfile3.dll"/>
+    <ROW File="libvorbisfile3.dll" Component_="libvorbisfile3.dll" FileName="LIBVOR~3.DLL|libvorbisfile-3.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libvorbisfile-3.dll" SelfReg="false" NextFile="libwebp5.dll"/>
+    <ROW File="libwebp5.dll" Component_="libwebp5.dll" FileName="LIBWEB~1.DLL|libwebp-5.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libwebp-5.dll" SelfReg="false" NextFile="libwinpthread1.dll"/>
+    <ROW File="libwinpthread1.dll" Component_="libwinpthread1.dll" FileName="LIBWIN~1.DLL|libwinpthread-1.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libwinpthread-1.dll" SelfReg="false" NextFile="libxml22.dll"/>
+    <ROW File="libxml22.dll" Component_="libxml22.dll" FileName="LIBXML~1.DLL|libxml2-2.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\libxml2-2.dll" SelfReg="false" NextFile="SDL2.dll"/>
+    <ROW File="occillo.exe" Component_="occillo.exe" FileName="occillo.exe" Attributes="0" SourcePath="..\src\occillo.exe" SelfReg="false" NextFile="UbuntuB.ttf" DigSign="true"/>
+    <ROW File="occillo.ico" Component_="background.png" FileName="occillo.ico" Attributes="0" SourcePath="..\images\occillo.ico" SelfReg="false"/>
+    <ROW File="occillo.png" Component_="background.png" FileName="occillo.png" Attributes="0" SourcePath="..\images\occillo.png" SelfReg="false" NextFile="occillo.svg"/>
+    <ROW File="occillo.svg" Component_="background.png" FileName="occillo.svg" Attributes="0" SourcePath="..\images\occillo.svg" SelfReg="false" NextFile="paddle_green.svg"/>
+    <ROW File="paddle_green.svg" Component_="background.png" FileName="PADDLE~1.SVG|paddle_green.svg" Attributes="0" SourcePath="..\images\paddle_green.svg" SelfReg="false" NextFile="paddle_grey.svg"/>
+    <ROW File="paddle_grey.svg" Component_="background.png" FileName="PADDLE~2.SVG|paddle_grey.svg" Attributes="0" SourcePath="..\images\paddle_grey.svg" SelfReg="false" NextFile="paddle_metal.svg"/>
+    <ROW File="paddle_metal.svg" Component_="background.png" FileName="PADDLE~3.SVG|paddle_metal.svg" Attributes="0" SourcePath="..\images\paddle_metal.svg" SelfReg="false" NextFile="pointer.svg"/>
+    <ROW File="pipawalkinthepark.it" Component_="COPYING" FileName="PIP-AW~1.IT|pip-awalkinthepark.it" Attributes="0" SourcePath="..\music\pip-awalkinthepark.it" SelfReg="false" NextFile="pipboilingdeals.it"/>
+    <ROW File="pipboilingdeals.it" Component_="COPYING" FileName="PIP-BO~1.IT|pip-boilingdeals.it" Attributes="0" SourcePath="..\music\pip-boilingdeals.it" SelfReg="false" NextFile="pipbulldogge.it"/>
+    <ROW File="pipbulldogge.it" Component_="COPYING" FileName="PIP-BU~1.IT|pip-bulldogge.it" Attributes="0" SourcePath="..\music\pip-bulldogge.it" SelfReg="false" NextFile="pipchewable.it"/>
+    <ROW File="pipchewable.it" Component_="COPYING" FileName="PIP-CH~1.IT|pip-chewable.it" Attributes="0" SourcePath="..\music\pip-chewable.it" SelfReg="false" NextFile="pipcompaction.it"/>
+    <ROW File="pipcompaction.it" Component_="COPYING" FileName="PIP-CO~1.IT|pip-compaction.it" Attributes="0" SourcePath="..\music\pip-compaction.it" SelfReg="false" NextFile="pipdungeonsofsplendor.it"/>
+    <ROW File="pipdungeonsofsplendor.it" Component_="COPYING" FileName="PIP-DU~1.IT|pip-dungeonsofsplendor.it" Attributes="0" SourcePath="..\music\pip-dungeonsofsplendor.it" SelfReg="false" NextFile="piphithere.it"/>
+    <ROW File="piphithere.it" Component_="COPYING" FileName="PIP-HI~1.IT|pip-hithere.it" Attributes="0" SourcePath="..\music\pip-hithere.it" SelfReg="false" NextFile="piphorizonapproaching.it"/>
+    <ROW File="piphorizonapproaching.it" Component_="COPYING" FileName="PIP-HO~1.IT|pip-horizonapproaching.it" Attributes="0" SourcePath="..\music\pip-horizonapproaching.it" SelfReg="false" NextFile="pipimadeamistake.it"/>
+    <ROW File="pipimadeamistake.it" Component_="COPYING" FileName="PIP-IM~1.IT|pip-imadeamistake.it" Attributes="0" SourcePath="..\music\pip-imadeamistake.it" SelfReg="false" NextFile="pipmajordisappointment.it"/>
+    <ROW File="pipmajordisappointment.it" Component_="COPYING" FileName="PIP-MA~1.IT|pip-majordisappointment.it" Attributes="0" SourcePath="..\music\pip-majordisappointment.it" SelfReg="false" NextFile="pipmegalithsintrouble.it"/>
+    <ROW File="pipmegalithsintrouble.it" Component_="COPYING" FileName="PIP-ME~1.IT|pip-megalithsintrouble.it" Attributes="0" SourcePath="..\music\pip-megalithsintrouble.it" SelfReg="false" NextFile="piponceagain.it"/>
+    <ROW File="piponceagain.it" Component_="COPYING" FileName="PIP-ON~1.IT|pip-onceagain.it" Attributes="0" SourcePath="..\music\pip-onceagain.it" SelfReg="false" NextFile="pipoutofit.it"/>
+    <ROW File="pipoutofit.it" Component_="COPYING" FileName="PIP-OU~1.IT|pip-outofit.it" Attributes="0" SourcePath="..\music\pip-outofit.it" SelfReg="false" NextFile="pipruby.it"/>
+    <ROW File="pipruby.it" Component_="COPYING" FileName="pip-ruby.it" Attributes="0" SourcePath="..\music\pip-ruby.it" SelfReg="false" NextFile="pipspindlydeals.it"/>
+    <ROW File="pipspindlydeals.it" Component_="COPYING" FileName="PIP-SP~1.IT|pip-spindlydeals.it" Attributes="0" SourcePath="..\music\pip-spindlydeals.it" SelfReg="false" NextFile="piptantrumsgalore.it"/>
+    <ROW File="piptantrumsgalore.it" Component_="COPYING" FileName="PIP-TA~1.IT|pip-tantrumsgalore.it" Attributes="0" SourcePath="..\music\pip-tantrumsgalore.it" SelfReg="false" NextFile="piptheserpentswings.it"/>
+    <ROW File="piptheserpentswings.it" Component_="COPYING" FileName="PIP-TH~1.IT|pip-theserpentswings.it" Attributes="0" SourcePath="..\music\pip-theserpentswings.it" SelfReg="false" NextFile="pipuraniumtolead.it"/>
+    <ROW File="pipuraniumtolead.it" Component_="COPYING" FileName="PIP-UR~1.IT|pip-uraniumtolead.it" Attributes="0" SourcePath="..\music\pip-uraniumtolead.it" SelfReg="false" NextFile="pipursusignoramus.it"/>
+    <ROW File="pipursusignoramus.it" Component_="COPYING" FileName="PIP-UR~2.IT|pip-ursusignoramus.it" Attributes="0" SourcePath="..\music\pip-ursusignoramus.it" SelfReg="false" NextFile="pipvolcanic.it"/>
+    <ROW File="pipvolcanic.it" Component_="COPYING" FileName="PIP-VO~1.IT|pip-volcanic.it" Attributes="0" SourcePath="..\music\pip-volcanic.it" SelfReg="false" NextFile="pipwinterinpipia.it"/>
+    <ROW File="pipwinterinpipia.it" Component_="COPYING" FileName="PIP-WI~1.IT|pip-winterinpipia.it" Attributes="0" SourcePath="..\music\pip-winterinpipia.it" SelfReg="false" NextFile="da.mo"/>
+    <ROW File="pointer.svg" Component_="background.png" FileName="pointer.svg" Attributes="0" SourcePath="..\images\pointer.svg" SelfReg="false" NextFile="readme.txt"/>
+    <ROW File="readme.txt" Component_="background.png" FileName="readme.txt" Attributes="0" SourcePath="..\images\readme.txt" SelfReg="false" NextFile="selectnext.svg"/>
+    <ROW File="selectnext.svg" Component_="background.png" FileName="SELECT~1.SVG|selectnext.svg" Attributes="0" SourcePath="..\images\selectnext.svg" SelfReg="false" NextFile="selectprevious.svg"/>
+    <ROW File="selectprevious.svg" Component_="background.png" FileName="SELECT~2.SVG|selectprevious.svg" Attributes="0" SourcePath="..\images\selectprevious.svg" SelfReg="false" NextFile="volumeslider.svg"/>
+    <ROW File="smpeg2.dll" Component_="smpeg2.dll" FileName="smpeg2.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\smpeg2.dll" SelfReg="false" NextFile="zlib1.dll"/>
+    <ROW File="touch.ogg" Component_="bomb.ogg" FileName="touch.ogg" Attributes="0" SourcePath="..\sounds\touch.ogg" SelfReg="false" NextFile="libbz21.dll"/>
+    <ROW File="ubuntufontlicence1.0.txt" Component_="Makefile" FileName="UBUNTU~1.TXT|ubuntu-font-licence-1.0.txt" Attributes="0" SourcePath="..\fonts\ubuntu-font-licence-1.0.txt" SelfReg="false" NextFile="UbuntuR.ttf"/>
+    <ROW File="volumeslider.svg" Component_="background.png" FileName="VOLUME~1.SVG|volumeslider.svg" Attributes="0" SourcePath="..\images\volumeslider.svg" SelfReg="false" NextFile="COPYING"/>
+    <ROW File="zlib1.dll" Component_="zlib1.dll" FileName="zlib1.dll" Attributes="0" SourcePath="..\..\..\..\mingw64\bin\zlib1.dll" SelfReg="false" NextFile="libportaudio2.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="." PackageFileName="occillo" Languages="en" InstallationType="4" UseLargeSchema="true" MsiPackageType="x64"/>
+    <ATTRIBUTE name="CurrentBuild" value="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\FolderDlg.aip"/>
+    <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceTypeDlg.aip"/>
+    <ROW Fragment="MaintenanceWelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceWelcomeDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
+    <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
+    <ROW Fragment="VerifyRemoveDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRemoveDlg.aip"/>
+    <ROW Fragment="VerifyRepairDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRepairDlg.aip"/>
+    <ROW Fragment="WelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\WelcomeDlg.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="99"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="198"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="202"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="197"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_MAINT" Ordering="101"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="ChangeButton" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="501"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RemoveButton" Event="NewDialog" Argument="VerifyRemoveDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RepairButton" Event="NewDialog" Argument="VerifyRepairDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="1"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Repair" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="399" Options="1"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Remove" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="299" Options="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="201"/>
+    <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="299"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="203"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
+    <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]" MultiBuildTarget="DefaultBuild:[ProgramFiles64Folder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="occillo.exe" SourcePath="..\images\occillo.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
+    <ROW Action="AI_DpiContentScale" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="( Version9X OR ( NOT VersionNT64 ) OR ( VersionNT64 AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &gt;= 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &lt;&gt; 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &lt;&gt; 2)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &gt;= 1)))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &lt;&gt; 1)))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &lt;&gt; 2)))) AND ((VersionNT64 &lt;&gt; 600) OR (((VersionNT64 = 600) AND (ServicePackLevel &gt;= 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 600) OR (((VersionNT64 = 600) AND (ServicePackLevel &lt;&gt; 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 600) OR (((VersionNT64 = 600) AND (ServicePackLevel &lt;&gt; 2)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 600) OR ((VersionNT64 = 600) AND (MsiNTProductType = 1))) AND ((VersionNT64 &lt;&gt; 601) OR ((VersionNT64 = 601) AND ((ServicePackLevel &gt;= 1) OR (MsiNTProductType = 1)))) AND ((VersionNT64 &lt;&gt; 601) OR (((VersionNT64 = 601) AND (ServicePackLevel &lt;&gt; 1)) OR (MsiNTProductType = 1))) AND ((VersionNT64 &lt;&gt; 602) OR ((VersionNT64 = 602) AND ((ServicePackLevel &gt;= 1) OR (MsiNTProductType = 1)))) AND ((VersionNT64 &lt;&gt; 603) OR ((VersionNT64 = 603) AND ((ServicePackLevel &gt;= 1) OR (MsiNTProductType = 1)))) ) )" Description="[ProductName] cannot be installed on the following Windows versions: [WindowsTypeNT64Display]." DescriptionLocId="AI.LaunchCondition.NoSpecificNT64" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="( Version9X OR VersionNT64 )" Description="[ProductName] cannot be installed on [WindowsTypeNTDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on the following Windows versions: [WindowsTypeNT40Display]." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]." DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
+    <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
+    <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="occillo" Directory_="ProgramMenuFolder" Name="occillo" Component_="occillo.exe" Target="[#occillo.exe]" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
+    <ATTRIBUTE name="UsedTheme" value="classic"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="0.0.1" VersionMax="[|ProductVersion]" Attributes="257" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+  </COMPONENT>
+</DOCUMENT>

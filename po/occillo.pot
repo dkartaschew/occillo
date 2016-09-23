@@ -1,0 +1,154 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Darran Kartaschew
+# This file is distributed under the same license as the occillo package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: occillo 1.0.0\n"
+"Report-Msgid-Bugs-To: chewy509@mailcity.com\n"
+"POT-Creation-Date: 2016-09-17 16:38+1000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /home/darran/git/occillo/game/level1.txt:1
+msgid "Level One"
+msgstr ""
+
+#: /home/darran/git/occillo/game/level2.txt:1
+msgid "Level Two"
+msgstr ""
+
+#: /home/darran/git/occillo/game/level3.txt:1
+msgid "Level Three"
+msgstr ""
+
+#: src/main.cc:152
+msgid "Configuration File "
+msgstr ""
+
+#: src/main.cc:154
+msgid "Data directory is "
+msgstr ""
+
+#: src/main.cc:155
+msgid "Game definition file is "
+msgstr ""
+
+#: src/main.cc:160
+msgid "Unable to locate game configuration, exiting application"
+msgstr ""
+
+#: src/main.cc:168
+msgid "Failed to initialize, exiting application"
+msgstr ""
+
+#: src/game/Level.cc:480
+#, c-format
+msgid "Lives : %d"
+msgstr ""
+
+#: src/game/Level.cc:487
+#, c-format
+msgid "Score: %08d"
+msgstr ""
+
+#: src/game/Level.cc:534
+msgid "Bump!"
+msgstr ""
+
+#: src/game/Level.cc:544 src/game/EndGame.cc:58
+msgid "Game Over"
+msgstr ""
+
+#: src/game/Level.cc:866 src/game/Level.cc:882
+msgid "+1 Life"
+msgstr ""
+
+#: src/game/EndGame.cc:52
+msgid "OK"
+msgstr ""
+
+#: src/game/EndGame.cc:63
+#, c-format
+msgid "Score: %d"
+msgstr ""
+
+#: src/game/EndGame.cc:70
+msgid "Player Name:"
+msgstr ""
+
+#: src/game/EndGame.cc:83
+msgid "Sorry, need to do better next time!"
+msgstr ""
+
+#: src/menu/MainMenu.cc:67
+msgid "Play"
+msgstr ""
+
+#: src/menu/MainMenu.cc:73 src/menu/HiScoreMenu.cc:49
+msgid "High Scores"
+msgstr ""
+
+#: src/menu/MainMenu.cc:79 src/menu/OptionsMenu.cc:54
+msgid "Options"
+msgstr ""
+
+#: src/menu/MainMenu.cc:85 src/menu/CreditsMenu.cc:47
+msgid "Credits"
+msgstr ""
+
+#: src/menu/MainMenu.cc:91
+msgid "Quit"
+msgstr ""
+
+#: src/menu/CreditsMenu.cc:66
+msgid "Dedicated to"
+msgstr ""
+
+#: src/menu/CreditsMenu.cc:67
+msgid "Elin, Isaac and Gabriel"
+msgstr ""
+
+#: src/menu/CreditsMenu.cc:68
+msgid "Game Design and Programming"
+msgstr ""
+
+#: src/menu/CreditsMenu.cc:69
+msgid "Darran Kartaschew"
+msgstr ""
+
+#: src/menu/CreditsMenu.cc:73 src/menu/HiScoreMenu.cc:64
+#: src/menu/OptionsMenu.cc:139
+msgid "Return"
+msgstr ""
+
+#: src/menu/OptionsMenu.cc:59
+msgid "Screen Resolution"
+msgstr ""
+
+#: src/menu/OptionsMenu.cc:60
+msgid "Full Screen"
+msgstr ""
+
+#: src/menu/OptionsMenu.cc:61
+msgid "Effects Volume"
+msgstr ""
+
+#: src/menu/OptionsMenu.cc:62
+msgid "Music Volume"
+msgstr ""
+
+#: src/menu/OptionsMenu.cc:132
+msgid "Apply"
+msgstr ""
+
+#: src/ui/UIText.cc:33
+msgid "_"
+msgstr ""

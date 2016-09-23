@@ -1,0 +1,155 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Darran Kartaschew
+# This file is distributed under the same license as the occillo package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: occillo 1.0.0\n"
+"Report-Msgid-Bugs-To: chewy509@mailcity.com\n"
+"POT-Creation-Date: 2016-09-17 16:38+1000\n"
+"PO-Revision-Date: 2016-09-17 16:44+1000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: /home/darran/git/occillo/game/level1.txt:1
+msgid "Level One"
+msgstr "Spil Level One"
+
+#: /home/darran/git/occillo/game/level2.txt:1
+msgid "Level Two"
+msgstr ""
+
+#: /home/darran/git/occillo/game/level3.txt:1
+msgid "Level Three"
+msgstr ""
+
+#: src/main.cc:152
+msgid "Configuration File "
+msgstr "Konfigurationsfil"
+
+#: src/main.cc:154
+msgid "Data directory is "
+msgstr "Data Directory er"
+
+#: src/main.cc:155
+msgid "Game definition file is "
+msgstr "Spil definition filen er"
+
+#: src/main.cc:160
+msgid "Unable to locate game configuration, exiting application"
+msgstr "Kan ikke finde spil Konfiguration File, spændende program"
+
+#: src/main.cc:168
+msgid "Failed to initialize, exiting application"
+msgstr "Kunne ikke initialisere datahåndtering"
+
+#: src/game/Level.cc:480
+#, c-format
+msgid "Lives : %d"
+msgstr "Lives : %d"
+
+#: src/game/Level.cc:487
+#, c-format
+msgid "Score: %08d"
+msgstr "Score: %08d"
+
+#: src/game/Level.cc:534
+msgid "Bump!"
+msgstr "Støde!"
+
+#: src/game/Level.cc:544 src/game/EndGame.cc:58
+msgid "Game Over"
+msgstr "Puslespil"
+
+#: src/game/Level.cc:866 src/game/Level.cc:882
+msgid "+1 Life"
+msgstr "+1 Life"
+
+#: src/game/EndGame.cc:52
+msgid "OK"
+msgstr "OK"
+
+#: src/game/EndGame.cc:63
+#, c-format
+msgid "Score: %d"
+msgstr "Score: %d"
+
+#: src/game/EndGame.cc:70
+msgid "Player Name:"
+msgstr "Spiller Navn:"
+
+#: src/game/EndGame.cc:83
+msgid "Sorry, need to do better next time!"
+msgstr "Beklager, nødt til at gøre det bedre næste gang!"
+
+#: src/menu/MainMenu.cc:67
+msgid "Play"
+msgstr "Afspil"
+
+#: src/menu/MainMenu.cc:73 src/menu/HiScoreMenu.cc:49
+msgid "High Scores"
+msgstr "høj score"
+
+#: src/menu/MainMenu.cc:79 src/menu/OptionsMenu.cc:54
+msgid "Options"
+msgstr "Indstillinger"
+
+#: src/menu/MainMenu.cc:85 src/menu/CreditsMenu.cc:47
+msgid "Credits"
+msgstr "kreditter"
+
+#: src/menu/MainMenu.cc:91
+msgid "Quit"
+msgstr "Afslut"
+
+#: src/menu/CreditsMenu.cc:66
+msgid "Dedicated to"
+msgstr "Dedikeret til"
+
+#: src/menu/CreditsMenu.cc:67
+msgid "Elin, Isaac and Gabriel"
+msgstr "Elin, Isaac og Gabriel"
+
+#: src/menu/CreditsMenu.cc:68
+msgid "Game Design and Programming"
+msgstr "Game Design og programmering"
+
+#: src/menu/CreditsMenu.cc:69
+msgid "Darran Kartaschew"
+msgstr "Darran Kartaschew"
+
+#: src/menu/CreditsMenu.cc:73 src/menu/HiScoreMenu.cc:64
+#: src/menu/OptionsMenu.cc:139
+msgid "Return"
+msgstr "Retur"
+
+#: src/menu/OptionsMenu.cc:59
+msgid "Screen Resolution"
+msgstr "Skærmopløsning"
+
+#: src/menu/OptionsMenu.cc:60
+msgid "Full Screen"
+msgstr "Fuldskærm"
+
+#: src/menu/OptionsMenu.cc:61
+msgid "Effects Volume"
+msgstr "Lydeffekter"
+
+#: src/menu/OptionsMenu.cc:62
+msgid "Music Volume"
+msgstr "Musik lydstyrke"
+
+#: src/menu/OptionsMenu.cc:132
+msgid "Apply"
+msgstr "Anvend"
+
+#: src/ui/UIText.cc:33
+msgid "_"
+msgstr "_"

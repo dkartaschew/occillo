@@ -1,0 +1,29 @@
+ID                      ICON                    "../images/occillo.ico"
+1 VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK 0x0L
+ FILEFLAGS 0x0L
+ FILEOS 0x40000L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004e4"
+        BEGIN
+            VALUE "CompanyName", "Occillo Development Team"
+            VALUE "FileDescription", "Occillo"
+            VALUE "FileVersion", "1.0"
+            VALUE "InternalName", "Occillo"
+            VALUE "LegalCopyright", "Darran Kartaschew"
+            VALUE "OriginalFilename", "Occillo.exe"
+            VALUE "ProductName", "Occillo"
+            VALUE "ProductVersion", "1.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1252
+    END
+END

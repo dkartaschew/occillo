@@ -1,0 +1,202 @@
+Occillo 1.0.0
+
+Requirements:
+-------------
+
+C++11 compiler
+SDL 2.0
+SDL_image 2.0
+SDL_ttf 2.0
+SDL_mixer 2.0
+librsvg
+  Cairo
+  Cairo-SVG
+  glib
+cppunit (tests only)
+
+General Installation:
+---------------------
+
+Typically, a user can:
+$ ./configure
+$ make
+# make install
+
+And Occillo will be installed into /usr/local/
+
+To override installation location, use the --prefix option, and compiler
+selection may be made using environment variables as passed to ./configure.
+
+Systems:
+--------
+
+Arch Linux:
+-----------
+
+Should build without issues once dependencies are installed:
+
+Basic dependencies: 
+    sdl2 
+    sdl2_image 
+    sdl2_mixer 
+    sdl2_ttf 
+    librsvg
+
+Redhat 7.x / CentOS 7.x:
+------------------------
+
+CentOS requires SDL2 to be installed manually, or via a 3rd party repository.
+
+Basic dependencies: 
+    sdl2 
+    sdl2_image 
+    sdl2_mixer 
+    sdl2_ttf 
+    librsvg
+
+Debian 8.x / Ubuntu 14.04:
+--------------------------
+
+Should build without issues once dependencies are installed:
+
+Development/Build dependencies:
+    libsdl2-dev
+    libsdl2-image-dev
+    libsdl2-mixer-dev
+    libsdl2-ttf2-dev
+    librsvg-dev
+    autoconf-archive (required for C++11 m4 macros if rebuilding .configure).
+
+Runtime dependencies: 
+    libsdl2-2.0-0 
+    libsdl2-image 
+    libsdl2-mixer 
+    libsdl2-ttf 
+    librsvg
+
+OpenSuse 13.2:
+--------------
+
+Should build without issues once dependencies are installed:
+
+Development/Build dependencies:
+    gcc-g++
+    libSDL2-devel
+    libSDL2_image-devel
+    libSDL2-mixer-devel
+    libSDL2-ttf2-devel
+    librsvg-devel
+
+Runtime dependencies: 
+    libSDL2-2_0-0 
+    libSDL2_image 
+    libSDL2_mixer 
+    libSDL2_ttf 
+    librsvg
+
+
+Mac OS X 10.7+:
+---------------
+
+Requires XCode to be installed with clang, as the gcc version that ships with 
+Mac OS X doesn't support C++11.
+
+Can use macports/homebrew to install dependencies:
+    sdl2 
+    sdl2_image 
+    sdl2_mixer 
+    sdl2_ttf 
+    librsvg
+
+Typical configuration. 
+$ ./configure --prefix=/opt/local CXX=clang++ CC=clang CXXFLAGS='-stdlib=libc++'
+$ make
+# make install
+
+Windows 7+:
+-----------
+
+Compilation on Windows requires the use of mingw via MSYS.
+This is primarily due to librsvg (and dependents) only officially supported on
+Windows via MSYS.
+Packaging is performed via Advanced Installer.
+
+Install mingw, autotool, autoconf, libtool. 
+Install Basic dependencies: 
+    sdl2 
+    sdl2_image 
+    sdl2_mixer 
+    sdl2_ttf 
+    librsvg
+
+Run ./configure && make to build the binaries.
+Run Advanced Installer and load configuration file (pkg/occillo.aip).
+You can now build the MSI installer, and install the application via the MSI.
+
+Notes:
+------
+
+The Operating Systems listed above are by no means the minimum versions required,
+but are rather the instances I have available to me either as desktop systems
+or as virtual machines, therefore are those that I can directly test with.
+
+On all systems, the application should build using the native version of Make, 
+(There should be no requirement on GNU Make, but if the build fails, please trying
+using GNU Make to build, and let me know what systems fail using the default make
+installation).
+
+Known to compile with:
+gcc v4.6.2
+gcc v4.8.4
+gcc v5.2.0
+clang (XCode 4.6)
+
+Known to work on:
+Arch Linux
+Ubuntu 14.04
+Mac OSX 10.7 and 10.11
+Windows 7 SP1 and Windows 10.
+
+Netbeans Support:
+-----------------
+
+I primarily use a mix of vim and Netbeans for development, and whilst the
+build system is designed around autotools, there is support for building and
+debugging both the application and unit tests via Netbeans.
+
+Primary differences are:
+1. 'make check' only builds the tests. (autotools)
+2. 'make build-tests' builds the tests. (Netbeans)
+3. 'make test' runs all tests
+    'make test TEST=<test>' runs the selected test. (Netbeans).
+
+To import the project into Netbeans:
+1. Select "New Project - Existing sources"
+2. Run through the import wizard, ensuring the source base is ~/occillo/src and 
+    not ~/occillo.
+3. This will import it as an unmanaged project. You need to manually enable the
+    Test Files project folders.
+4. Open ~/nbproject/configuration.xml and add:
+
+<logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER"
+                   root=".">
+</logicalFolder>
+
+just before the <logicalFolder name="ExternalFiles Files"> entry.
+
+Reload the project in Netbeans.
+
+Then create a Test called "Runner" with TestRunner.cc as the sole file.
+Create a Test call "Collision" with Collision.cc and Collision.h as the test
+files... and so on for all tests. (see ~/tests/Makefile.am for all the 
+available tests).
+
+Now you should be able to run/debug the main application, as well as run/debug
+the provided cppunit tests.
+
+For those that wish to do similar with their own projects, simple look at
+~/Makefile.am and ~/tests/Makefile.am for the amendments to allow Netbeans
+to work with cppunit in an unmanaged project.

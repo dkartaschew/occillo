@@ -1,0 +1,26 @@
+# Handle files that xgettext can't handle automatically
+
+# intltool-extract is kind of weird. It treats the input file list as relative
+# to what it thinks $srcdir is, which is either the current directory or the
+# value of the undocumented -s parameter. For the output filename, it has two
+# modes: --update, the default, will output files in the same directory as the
+# input file. --local will output files in a tmp/ directory relative to the
+# current working directory.
+#
+# All output files need to be in $srcdir for gettext to be able to find them.
+
+DISTFILES.common.extra2 = Rules-extract
+
+%.txt.h: %.txt
+	@intltool-extract -q --type=gettext/quoted -l --srcdir / $(realpath $<) && \
+	sed 's/no-c-format/python-format/' < tmp/$$(basename $@) > $@ && \
+	rm -f tmp/$$(basename $@)
+
+maintainer-clean: maintainer-clean-extract
+maintainer-clean-extract:
+	find $(top_srcdir)\game \( -name '*.txt.h' \) \
+		-exec rm -f {} \;
+
+mostlyclean: mostlyclean-extract
+mostlyclean-extract:
+	rm -rf .intltool-merge-cache
