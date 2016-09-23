@@ -24,7 +24,11 @@ Makefile.in
 
 # Additional artefacts.
 Makefile
-/docs/
+/docs/html/
+/docs/latex/
+/docs/Doxyfile
+Makefile.in
+
 
 # C++ Dev
 
