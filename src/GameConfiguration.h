@@ -67,6 +67,7 @@
 #define OCCILLO_GAMECONFIGURATION_SETTING_PADDLE_WIDTH "paddleWidthRatio"
 #define OCCILLO_GAMECONFIGURATION_SETTING_BRICK_HIT_INCREASE "brickHitSpeedIncreaseRatio"
 #define OCCILLO_GAMECONFIGURATION_SETTING_AWARD_LIFE "awardBonusLife"
+#define OCCILLO_GAMECONFIGURATION_SETTING_GAME_NAME "gamename"
 
 /**
 * @brief The main game configuration.
@@ -87,6 +88,11 @@ class GameConfiguration {
 	 * @return TRUE if successful
 	 */
 	bool load(const std::string& file);
+	/**
+	 * Get the name of the game.
+	 * @return A string that is the game name.
+	 */
+	std::string* getGameName();
 	/**
 	 * Get the image filename to use as a background;
 	 * @return A string that defines the background image.
@@ -319,6 +325,7 @@ class GameConfiguration {
 
   private:
 
+	std::string* gamename;
 	std::string* background;
 	std::string* font;
 	std::string* fontbold;

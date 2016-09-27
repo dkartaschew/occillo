@@ -55,6 +55,14 @@ bool Display::init(Configuration *config, GameConfiguration* game) {
 		displayHeight = config->getDisplayHeight();
 		displayWidth = config->getDisplayWidth();
 
+	  std::string* name = game->getGameName();
+		std::string gameName;
+		if(name == nullptr){
+			gameName = PACKAGE_NAME " " PACKAGE_VERSION;
+		} else {
+			gameName = *name;
+		}
+
 		//Create window
 		Uint32 sdl_flags = 0;
 		if (config->isFullscreen()) {
@@ -63,7 +71,7 @@ bool Display::init(Configuration *config, GameConfiguration* game) {
 			sdl_flags = SDL_WINDOW_SHOWN;
 		}
 		g_info("%s[%d] Creating Display %d %d %d", __FILE__, __LINE__, displayWidth, displayHeight, displayFullscreen);
-		displayWindow = SDL_CreateWindow(PACKAGE_NAME, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, displayWidth, displayHeight, sdl_flags);
+		displayWindow = SDL_CreateWindow(gameName.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, displayWidth, displayHeight, sdl_flags);
 
 		if (displayWindow == nullptr) {
 			g_info("%s[%d] Window could not be created! SDL Error: %s", __FILE__, __LINE__, SDL_GetError());

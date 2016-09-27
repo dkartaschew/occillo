@@ -42,10 +42,13 @@ bool MainMenu::Activate() {
 		const int bh = dh / MENU_ROWS;
 		const int menuA = config->getMenuFocusAlpha();
 		const int menuNA = config->getMenuNonFocusAlpha();
+		// Set the height of the version string to be 10, or half of brick height.
+		const int vh = (bh / 2) > 10 ? 10 : (bh /2); 
 
 		TTF_Font* fontTitle = TTF_OpenFont(config->locateResource(*(game->getFontBold())).c_str(), (bh * game->getTitleSizeRatio()));
 		TTF_Font* font = TTF_OpenFont(config->locateResource(*(game->getFont())).c_str(), bh);
-
+		TTF_Font* fontVersion = TTF_OpenFont(config->locateResource(*(game->getFont())).c_str(), vh);
+		
 		widgets = new std::vector<IUIWidget*>();
 
 		// Background
@@ -59,10 +62,18 @@ bool MainMenu::Activate() {
 		cursor = new UICursor(text, dw, dh);
 
 		// Title.
-		IUIWidget* widget = new UILabel(_(PACKAGE_NAME), fontTitle, game->getTitleFontColour(), renderer);
+		std::string* name = game->getGameName();
+		std::string gameName;
+		if(name == nullptr){
+			gameName = PACKAGE_NAME;
+		} else {
+			gameName = *name;
+		}
+		IUIWidget* widget = new UILabel(_(gameName.c_str()), fontTitle, game->getTitleFontColour(), renderer);
 		widget->setXY((dw / 2) - (widget->getWidth() / 2), bh * 3);
 		widgets->push_back(widget);
-
+		
+		// Start of menu options.
 		text = new Texture();
 		text->loadFromText(renderer, _("Play"), font, game->getFontColour());
 		widget = new UIButton(text, (dw / 2) - (text->getWidth() / 2), bh * 6, menuA, menuNA);
@@ -92,10 +103,17 @@ bool MainMenu::Activate() {
 		widget = new UIButton(text, (dw / 2) - (text->getWidth() / 2), bh * 14, menuA, menuNA);
 		widgets->push_back(widget);
 		widget->addEventListener(this);
+		
+		// Version information
+		 widget = new UILabel((PACKAGE_NAME " " PACKAGE_VERSION), fontVersion, game->getTitleFontColour(), renderer);
+		widget->setXY(dw - (widget->getWidth() + 1), dh - (widget->getHeight() + 1));
+		widgets->push_back(widget);
+
 
 		// Free the font.
 		TTF_CloseFont(font);
 		TTF_CloseFont(fontTitle);
+		TTF_CloseFont(fontVersion);
 
 		// Set the mouse to be hidden since we are drawing it ourselves.
 		SDL_ShowCursor(SDL_DISABLE);

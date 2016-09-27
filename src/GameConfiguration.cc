@@ -19,6 +19,7 @@
 #include "GameConfiguration.h"
 
 GameConfiguration::GameConfiguration() {
+	gamename = nullptr;
 	background = nullptr;
 	font = nullptr;
 	fontbold = nullptr;
@@ -67,6 +68,7 @@ GameConfiguration::GameConfiguration() {
 }
 
 GameConfiguration::~GameConfiguration() {
+	delete gamename;
 	delete background;
 	delete font;
 	delete fontbold;
@@ -109,6 +111,7 @@ bool GameConfiguration::load(const std::string& file) {
 	} else {
 		g_info("%s[%d] : game config file loaded.", __FILE__, __LINE__);
 		try {
+			setField(keyfile, gamename, OCCILLO_GAMECONFIGURATION_SETTING_GAME_NAME);
 			setField(keyfile, background, OCCILLO_GAMECONFIGURATION_SETTING_BACKGROUND);
 			setField(keyfile, font, OCCILLO_GAMECONFIGURATION_SETTING_FONT);
 			setField(keyfile, fontbold, OCCILLO_GAMECONFIGURATION_SETTING_FONTBOLD);
@@ -164,6 +167,10 @@ bool GameConfiguration::load(const std::string& file) {
 	highScoreTable->loadFromFile(*hiscorefile);
 
 	return true;
+}
+
+std::string* GameConfiguration::getGameName() {
+	return gamename;
 }
 
 std::string* GameConfiguration::getBackground() {
