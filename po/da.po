@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: occillo 1.0.0\n"
 "Report-Msgid-Bugs-To: chewy509@mailcity.com\n"
-"POT-Creation-Date: 2016-09-17 16:38+1000\n"
+"POT-Creation-Date: 2016-09-30 19:56+1000\n"
 "PO-Revision-Date: 2016-09-17 16:44+1000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -30,6 +30,43 @@ msgstr ""
 msgid "Level Three"
 msgstr ""
 
+#: /home/darran/git/occillo/game/level4.txt:1
+#, fuzzy
+msgid "Level Four"
+msgstr "Spil Level One"
+
+#: /home/darran/git/occillo/game/level5.txt:1
+#, fuzzy
+msgid "Level Five"
+msgstr "Spil Level One"
+
+#: /home/darran/git/occillo/game/level6.txt:1
+#, fuzzy
+msgid "Level Six - Only One!"
+msgstr "Spil Level One"
+
+#: /home/darran/git/occillo/game/level7.txt:1
+#, fuzzy
+msgid "Level Seven"
+msgstr "Spil Level One"
+
+#: /home/darran/git/occillo/game/level8.txt:1
+msgid "Deadpool Rules"
+msgstr ""
+
+#: /home/darran/git/occillo/game/level9.txt:1
+#, fuzzy
+msgid "Level Nine"
+msgstr "Spil Level One"
+
+#: /home/darran/git/occillo/game/level10.txt:1
+msgid "Iron Man Rules"
+msgstr ""
+
+#: /home/darran/git/occillo/game/level11.txt:1
+msgid "Level Eleven - Just One!"
+msgstr ""
+
 #: src/main.cc:152
 msgid "Configuration File "
 msgstr "Konfigurationsfil"
@@ -50,25 +87,25 @@ msgstr "Kan ikke finde spil Konfiguration File, spændende program"
 msgid "Failed to initialize, exiting application"
 msgstr "Kunne ikke initialisere datahåndtering"
 
-#: src/game/Level.cc:480
+#: src/game/Level.cc:487
 #, c-format
 msgid "Lives : %d"
 msgstr "Lives : %d"
 
-#: src/game/Level.cc:487
+#: src/game/Level.cc:494
 #, c-format
 msgid "Score: %08d"
 msgstr "Score: %08d"
 
-#: src/game/Level.cc:534
+#: src/game/Level.cc:541
 msgid "Bump!"
 msgstr "Støde!"
 
-#: src/game/Level.cc:544 src/game/EndGame.cc:58
+#: src/game/Level.cc:551 src/game/EndGame.cc:58
 msgid "Game Over"
 msgstr "Puslespil"
 
-#: src/game/Level.cc:866 src/game/Level.cc:882
+#: src/game/Level.cc:873 src/game/Level.cc:889
 msgid "+1 Life"
 msgstr "+1 Life"
 
@@ -89,23 +126,23 @@ msgstr "Spiller Navn:"
 msgid "Sorry, need to do better next time!"
 msgstr "Beklager, nødt til at gøre det bedre næste gang!"
 
-#: src/menu/MainMenu.cc:67
+#: src/menu/MainMenu.cc:78
 msgid "Play"
 msgstr "Afspil"
 
-#: src/menu/MainMenu.cc:73 src/menu/HiScoreMenu.cc:49
+#: src/menu/MainMenu.cc:84 src/menu/HiScoreMenu.cc:49
 msgid "High Scores"
 msgstr "høj score"
 
-#: src/menu/MainMenu.cc:79 src/menu/OptionsMenu.cc:54
+#: src/menu/MainMenu.cc:90 src/menu/OptionsMenu.cc:54
 msgid "Options"
 msgstr "Indstillinger"
 
-#: src/menu/MainMenu.cc:85 src/menu/CreditsMenu.cc:47
+#: src/menu/MainMenu.cc:96 src/menu/CreditsMenu.cc:47
 msgid "Credits"
 msgstr "kreditter"
 
-#: src/menu/MainMenu.cc:91
+#: src/menu/MainMenu.cc:102
 msgid "Quit"
 msgstr "Afslut"
 

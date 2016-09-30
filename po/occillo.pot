@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: occillo 1.0.0\n"
 "Report-Msgid-Bugs-To: chewy509@mailcity.com\n"
-"POT-Creation-Date: 2016-09-17 16:38+1000\n"
+"POT-Creation-Date: 2016-09-30 19:56+1000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,38 @@ msgstr ""
 
 #: /home/darran/git/occillo/game/level3.txt:1
 msgid "Level Three"
+msgstr ""
+
+#: /home/darran/git/occillo/game/level4.txt:1
+msgid "Level Four"
+msgstr ""
+
+#: /home/darran/git/occillo/game/level5.txt:1
+msgid "Level Five"
+msgstr ""
+
+#: /home/darran/git/occillo/game/level6.txt:1
+msgid "Level Six - Only One!"
+msgstr ""
+
+#: /home/darran/git/occillo/game/level7.txt:1
+msgid "Level Seven"
+msgstr ""
+
+#: /home/darran/git/occillo/game/level8.txt:1
+msgid "Deadpool Rules"
+msgstr ""
+
+#: /home/darran/git/occillo/game/level9.txt:1
+msgid "Level Nine"
+msgstr ""
+
+#: /home/darran/git/occillo/game/level10.txt:1
+msgid "Iron Man Rules"
+msgstr ""
+
+#: /home/darran/git/occillo/game/level11.txt:1
+msgid "Level Eleven - Just One!"
 msgstr ""
 
 #: src/main.cc:152
@@ -49,25 +81,25 @@ msgstr ""
 msgid "Failed to initialize, exiting application"
 msgstr ""
 
-#: src/game/Level.cc:480
+#: src/game/Level.cc:487
 #, c-format
 msgid "Lives : %d"
 msgstr ""
 
-#: src/game/Level.cc:487
+#: src/game/Level.cc:494
 #, c-format
 msgid "Score: %08d"
 msgstr ""
 
-#: src/game/Level.cc:534
+#: src/game/Level.cc:541
 msgid "Bump!"
 msgstr ""
 
-#: src/game/Level.cc:544 src/game/EndGame.cc:58
+#: src/game/Level.cc:551 src/game/EndGame.cc:58
 msgid "Game Over"
 msgstr ""
 
-#: src/game/Level.cc:866 src/game/Level.cc:882
+#: src/game/Level.cc:873 src/game/Level.cc:889
 msgid "+1 Life"
 msgstr ""
 
@@ -88,23 +120,23 @@ msgstr ""
 msgid "Sorry, need to do better next time!"
 msgstr ""
 
-#: src/menu/MainMenu.cc:67
+#: src/menu/MainMenu.cc:78
 msgid "Play"
 msgstr ""
 
-#: src/menu/MainMenu.cc:73 src/menu/HiScoreMenu.cc:49
+#: src/menu/MainMenu.cc:84 src/menu/HiScoreMenu.cc:49
 msgid "High Scores"
 msgstr ""
 
-#: src/menu/MainMenu.cc:79 src/menu/OptionsMenu.cc:54
+#: src/menu/MainMenu.cc:90 src/menu/OptionsMenu.cc:54
 msgid "Options"
 msgstr ""
 
-#: src/menu/MainMenu.cc:85 src/menu/CreditsMenu.cc:47
+#: src/menu/MainMenu.cc:96 src/menu/CreditsMenu.cc:47
 msgid "Credits"
 msgstr ""
 
-#: src/menu/MainMenu.cc:91
+#: src/menu/MainMenu.cc:102
 msgid "Quit"
 msgstr ""
 

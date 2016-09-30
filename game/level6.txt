@@ -1,5 +1,6 @@
-Level Six - Only One!
+"Level Six - Only One!"
 1000
+50 40 60 80 90 94 99
 2.0
 music/pip-volcanic.it
 sounds/click.ogg

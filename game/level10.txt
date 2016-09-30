@@ -1,6 +1,7 @@
-Iron Man Rules
+"Iron Man Rules"
 100
-2.0
+50 40 60 80 90 94 99
+1.8
 music/pip-ursusignoramus.it
 sounds/click.ogg
 sounds/touch.ogg
