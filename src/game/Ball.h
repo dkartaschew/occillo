@@ -18,6 +18,9 @@
 
 #ifndef GAME_BALL_H
 #define GAME_BALL_H
+
+#include "config.h"
+
 #include <cmath>
 #include <limits>
 #ifdef _WIN32

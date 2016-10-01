@@ -83,7 +83,9 @@ void Ball::setSpeed(double speed) {
 	    velocity.x = std::cos(direction) * speed;
 	    velocity.y = std::sin(direction) * speed; */
 	double oldspeed = getSpeed();
-	//g_info("%s[%d] : Ball speed  %f -> %f ", __FILE__, __LINE__, oldspeed, speed);
+#if DEBUG
+	g_info("%s[%d] : Ball speed  %f -> %f ", __FILE__, __LINE__, oldspeed, speed);
+#endif
 	double factor = speed / oldspeed;
 	velocity.x = velocity.x * factor;
 	velocity.y = velocity.y * factor;
@@ -148,42 +150,44 @@ void Ball::collision(Brick* brick) {
 	} else if ((centerY < brck.y) && (velocity.y > 0.00)) {
 		velocity.y = -velocity.y;
 	}
-/*	bool collisionHandled = false;
-	if((centerX >= brck.x) && (centerX <= (brck.x + brck.w))){
-		velocity.y = -velocity.y;
-		collisionHandled = true;
-	}
-	if((centerY >= brck.y) && (centerY <= (brck.y + brck.h))){
-		velocity.x = -velocity.x;
-		collisionHandled = true;
-	}
-	if(!collisionHandled){
-		// corner hit.
-		// Determine the x distance from the closest corner.
-    double x = 0;
-		double y = 0;
-		if(centerX < brck.x){
-			x = brck.x - centerX;
-		} else {
-      x = centerX - (brck.x + brck.w);
-		}
-		// Determine the y distance from the closest corner.
-		if(centerY < brck.y){
-			y = brck.y - centerY;
-		} else {
-			y = centerY - (brck.y + brck.h);
-		}
-		// Update the direction.
-    double c = -2 * (velocity.x * x + velocity.y * y) / (x * x + y * y);
-		g_info("%s[%d] : Ball center x y %f %f ", __FILE__, __LINE__, centerX, centerY);
- 		g_info("%s[%d] : Brick x y w h %f %f %f %f", __FILE__, __LINE__, brck.x, brck.y , brck.w, brck.h);
-		g_info("%s[%d] : x y c %f %f %f ", __FILE__, __LINE__, x, y , c);
-    velocity.x = velocity.x + c * x;
-    velocity.y = velocity.y + c * y;
-	}
-*/
+	/*  bool collisionHandled = false;
+	    if((centerX >= brck.x) && (centerX <= (brck.x + brck.w))){
+	        velocity.y = -velocity.y;
+	        collisionHandled = true;
+	    }
+	    if((centerY >= brck.y) && (centerY <= (brck.y + brck.h))){
+	        velocity.x = -velocity.x;
+	        collisionHandled = true;
+	    }
+	    if(!collisionHandled){
+	        // corner hit.
+	        // Determine the x distance from the closest corner.
+	    double x = 0;
+	        double y = 0;
+	        if(centerX < brck.x){
+	            x = brck.x - centerX;
+	        } else {
+	      x = centerX - (brck.x + brck.w);
+	        }
+	        // Determine the y distance from the closest corner.
+	        if(centerY < brck.y){
+	            y = brck.y - centerY;
+	        } else {
+	            y = centerY - (brck.y + brck.h);
+	        }
+	        // Update the direction.
+	    double c = -2 * (velocity.x * x + velocity.y * y) / (x * x + y * y);
+	        g_info("%s[%d] : Ball center x y %f %f ", __FILE__, __LINE__, centerX, centerY);
+	        g_info("%s[%d] : Brick x y w h %f %f %f %f", __FILE__, __LINE__, brck.x, brck.y , brck.w, brck.h);
+	        g_info("%s[%d] : x y c %f %f %f ", __FILE__, __LINE__, x, y , c);
+	    velocity.x = velocity.x + c * x;
+	    velocity.y = velocity.y + c * y;
+	    }
+	*/
+#if DEBUG
 	g_info("%s[%d] : Ball location  %f %f ", __FILE__, __LINE__, location.x, location.y);
 	g_info("%s[%d] : Ball direction %f %f ", __FILE__, __LINE__, velocity.x, velocity.y);
+#endif
 }
 
 void Ball::collision(Paddle* paddle) {
@@ -194,8 +198,9 @@ void Ball::collision(Paddle* paddle) {
 
 	// If the center of the ball is below the top of the paddle, then deflect left/right...
 	if (centerY > paddle->getY()) {
+#if DEBUG
 		g_info("%s[%d] : Paddle Collision %f > %d", __FILE__, __LINE__, centerY, paddle->getY());
-
+#endif
 		velocity.x = -velocity.x;
 		// Determine if we are inside the paddle (can happen with mouse movement),
 		// and if so, move our position outside of the paddle.
@@ -209,19 +214,21 @@ void Ball::collision(Paddle* paddle) {
 			// ball is on the right side.
 			location.x = paddleMin + paddleMax + 1;
 		}
+#if DEBUG
 		g_info("%s[%d] : Paddle Overlap relocate %f %f", __FILE__, __LINE__, location.x, location.y);
-
+#endif
 	} else {
-
+#if DEBUG
 		g_info("%s[%d] : Paddle Overlap/Collision rebound", __FILE__, __LINE__);
-
+#endif
 		// above the paddle, change the Y direction...
 		velocity.y = -velocity.y;
 
 		// If we have some overlap, then move the ball up...
 		if ((location.y + texture->getHeight()) >= paddle->getY()) {
+#if DEBUG
 			g_info("%s[%d] : Paddle Overlap/Collision Adjustment", __FILE__, __LINE__);
-
+#endif
 			location.y = paddle->getY() - texture->getHeight() - 1;
 		}
 		// we treat the paddle as convex, so adjust the direction -50 +50
@@ -247,6 +254,8 @@ void Ball::collision(Paddle* paddle) {
 		}
 		setDirection(direction);
 	}
+#if DEBUG
 	g_info("%s[%d] : Ball direction %f %f ", __FILE__, __LINE__, velocity.x, velocity.y);
+#endif
 }
 

@@ -197,11 +197,11 @@ bool Level::loadFromFile(const std::string& path) {
 	std::getline(lvl, levelName);
 	g_info("%s[%d] : Level name: %s", __FILE__, __LINE__, levelName.c_str());
 	// If the level name starts and ends with "<name>" quotes, then strip the quotes.
-  int l = levelName.size();
+	int l = levelName.size();
 	char& start = levelName.front();
 	char& end = levelName.back();
-	if(start == '"' && end == '"'){
-	  levelName = levelName.substr(1, l-2);
+	if (start == '"' && end == '"') {
+		levelName = levelName.substr(1, l - 2);
 	}
 
 	// base value for bricks.
@@ -617,7 +617,9 @@ void Level::updateState() {
 					handleCollision(cBrick);
 					// Quad destroy
 					if (cBrick->isQuadDestroy()) {
+#if DEBUG
 						g_info("%s[%d] : Quad Hit Brick Collision %d %d", __FILE__, __LINE__, cBrickY, cBrickX);
+#endif
 						handleCollision(bricks[(cBrickY - 1) * bricksWidth + (cBrickX - 1)]);
 						handleCollision(bricks[(cBrickY - 1) * bricksWidth + (cBrickX)]);
 						handleCollision(bricks[(cBrickY - 1) * bricksWidth + (cBrickX + 1)]);
@@ -628,7 +630,9 @@ void Level::updateState() {
 						handleCollision(bricks[(cBrickY + 1) * bricksWidth + (cBrickX + 1)]);
 					} else if (cBrick->isAllBrickDestroy()) {
 						// All Brick hit
+#if DEBUG
 						g_info("%s[%d] : All Hit Brick Collision %d %d", __FILE__, __LINE__, cBrickY, cBrickX);
+#endif
 						const int n = bricksWidth * bricksHigh;
 						for (int i = 0; i != n; i++) {
 							Brick* b = bricks[i];
@@ -654,7 +658,9 @@ void Level::updateState() {
 						if (paddleHitSound != nullptr) {
 							Mix_PlayChannel(-1, paddleHitSound, 0);
 						}
+#if DEBUG
 						g_info("%s[%d] : Paddle Collision %f", __FILE__, __LINE__, ctime);
+#endif
 						ball->move(elapsed * ctime);
 						ball->collision(paddle);
 						elapsed = elapsed * (1.0 - ctime);
@@ -665,6 +671,7 @@ void Level::updateState() {
 						if (paddleHitSound != nullptr) {
 							Mix_PlayChannel(-1, paddleHitSound, 0);
 						}
+#if DEBUG
 						g_info("%s[%d] : Paddle Overlap/Collision %f", __FILE__, __LINE__, ctime);
 						if (ctime <= 0.0) {
 							g_info("%s[%d] : Paddle %d x %d : %d x %d", __FILE__, __LINE__,
@@ -672,6 +679,7 @@ void Level::updateState() {
 							g_info("%s[%d] : Ball %d x %d : %d x %d", __FILE__, __LINE__,
 							       ball->getX(), ball->getY(), ball->getWidth(), ball->getHeight());
 						}
+#endif
 					} else {
 						// No brick collision, do full movement.
 						ball->move(elapsed);
@@ -794,7 +802,9 @@ Brick* Level::findCollision(int &activeBricks, double &ctime, double elapsed, in
 							ltime = ctime;
 						}
 					}
+#if DEBUG
 					g_info("%s[%d] : Collision %f @ %d x %d", __FILE__, __LINE__, ctime, i, j);
+#endif
 				}
 			}
 			if (b != nullptr) {
@@ -884,7 +894,7 @@ void Level::handleCollision(Brick* brick) {
 		if (multiple > awarded) {
 			gameState->addBonusLivesAwarded(multiple - awarded);
 			gameState->addLives(multiple - awarded);
-			
+
 			Texture *text = new Texture();
 			std::string value = _("+1 Life");
 			text->loadFromText(renderer, value, fontTitle, gameConfig->getFontColour(), gameConfig->getTitleFontColour());
