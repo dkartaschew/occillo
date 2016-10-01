@@ -347,7 +347,7 @@ unsigned int Texture::getFrame() {
 	unsigned int i = 0;
 	unsigned int delta = (SDL_GetTicks() - startTime); // time in msec
 	// Assume 10fps;
-	i = (delta / 100) % 10; // This will assume 10 frames.
+	i = (delta / 100); // This will assume 10 frames (i is delta in deci-seconds, or tenths of second)
 	// Now cap to sz.
 	i = i % sz;
 	return i;
