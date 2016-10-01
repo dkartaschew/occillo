@@ -20,10 +20,10 @@
 
 Texture::Texture() {
 	//Initialize
-	texture = nullptr;
 	width = 0;
 	height = 0;
 	lastError = nullptr;
+	startTime = SDL_GetTicks();
 }
 
 Texture::~Texture() {
@@ -38,7 +38,7 @@ bool Texture::loadFromFile(SDL_Renderer* renderer, const std::string& path) {
 
 bool Texture::loadFromFile(SDL_Renderer* renderer, const std::string& path, int width, int height) {
 	bool res = true;
-
+	destroy();
 	std::vector<std::string> frames = StringUtil::split(path, ';');
 	unsigned int sz = frames.size();
 	for (unsigned int i = 0; i < sz; i++) {
@@ -65,8 +65,6 @@ bool Texture::loadFromFile(SDL_Renderer* renderer, const std::string& path, int 
 }
 
 bool Texture::loadPNG(SDL_Renderer* renderer, const std::string& path, int width, int height) {
-	//Get rid of preexisting texture
-	destroy();
 	g_info("%s[%d]: Loading PNG file %s", __FILE__, __LINE__, path.c_str());
 	//The final texture
 	SDL_Texture* newTexture = nullptr;
@@ -123,13 +121,13 @@ bool Texture::loadPNG(SDL_Renderer* renderer, const std::string& path, int width
 	}
 
 	//Return success
-	this->texture = newTexture;
-	return this->texture != nullptr;
+	if (newTexture != nullptr) {
+		texture.push_back(newTexture);
+	}
+	return newTexture != nullptr;
 }
 
 bool Texture::loadSVG(SDL_Renderer* renderer, const std::string& path, int width, int height) {
-	//Get rid of preexisting texture
-	destroy();
 	//The final texture
 	SDL_Texture* newTexture = nullptr;
 	cairo_surface_t* cairo_surf = nullptr;
@@ -237,8 +235,10 @@ bool Texture::loadSVG(SDL_Renderer* renderer, const std::string& path, int width
 	cleanup(rsvg_handle, cr, cairo_surf, sdl_surface, image);
 
 	//Return success
-	this->texture = newTexture;
-	return this->texture != nullptr;
+	if (newTexture != nullptr) {
+		texture.push_back(newTexture);
+	}
+	return newTexture != nullptr;
 }
 
 bool Texture::loadFromText(SDL_Renderer* renderer, const std::string& text, TTF_Font *font, SDL_Color* colour) {
@@ -249,18 +249,19 @@ bool Texture::loadFromText(SDL_Renderer* renderer, const std::string& text, TTF_
 		g_info("%s[%d] : Unable to render text surface! SDL_ttf Error: %s", __FILE__, __LINE__, TTF_GetError());
 	} else {
 		//Create texture from surface pixels
-		this->texture = SDL_CreateTextureFromSurface( renderer, textSurface );
-		if ( this->texture == nullptr ) {
+		SDL_Texture* t = SDL_CreateTextureFromSurface( renderer, textSurface );
+		if ( t == nullptr ) {
 			g_info("%s[%d] : Unable to create texture %s", __FILE__, __LINE__, SDL_GetError());
 		} else {
 			//Get image dimensions
+			this->texture.push_back(t);
 			this->width = textSurface->w;
 			this->height = textSurface->h;
 		} //Get rid of old surface
 		SDL_FreeSurface( textSurface );
 	}
 	//Return success
-	return this->texture != nullptr;
+	return !texture.empty();
 }
 
 bool Texture::loadFromText(SDL_Renderer* renderer, const std::string& text, TTF_Font *font, SDL_Color* colour, SDL_Color* outlineColour) {
@@ -282,10 +283,11 @@ bool Texture::loadFromText(SDL_Renderer* renderer, const std::string& text, TTF_
 		g_info("%s[%d] : Unable to render text surface! SDL_ttf Error: %s", __FILE__, __LINE__, TTF_GetError());
 	} else {
 		//Create texture from surface pixels
-		this->texture = SDL_CreateTextureFromSurface( renderer, textBGSurface );
-		if ( this->texture == nullptr ) {
+		SDL_Texture* t = SDL_CreateTextureFromSurface( renderer, textBGSurface );
+		if ( t == nullptr ) {
 			g_info("%s[%d] : Unable to create texture %s", __FILE__, __LINE__, SDL_GetError());
 		} else {
+			this->texture.push_back(t);
 			//Get image dimensions
 			this->width = textBGSurface->w;
 			this->height = textBGSurface->h;
@@ -293,7 +295,7 @@ bool Texture::loadFromText(SDL_Renderer* renderer, const std::string& text, TTF_
 		SDL_FreeSurface( textBGSurface );
 	}
 	//Return success
-	return this->texture != nullptr;
+	return !texture.empty();
 }
 
 void Texture::setEmptyTexture(int width, int height) {
@@ -323,25 +325,48 @@ void Texture::cleanup(RsvgHandle * rsvg_handle, cairo_t * cr, cairo_surface_t * 
 
 void Texture::destroy() {
 	//Free texture if it exists
-	if (texture != nullptr) {
-		SDL_DestroyTexture(texture);
-		texture = nullptr;
-		width = 0;
-		height = 0;
-		lastError = nullptr;
+	unsigned int sz = texture.size();
+	for (unsigned int i = 0; i < sz; i++) {
+		SDL_Texture* t = texture[i];
+		if (t != nullptr) {
+			SDL_DestroyTexture(t);
+		}
 	}
+	texture.clear();
+	width = 0;
+	height = 0;
+	lastError = nullptr;
+	startTime = SDL_GetTicks();
+}
+
+unsigned int Texture::getFrame() {
+	const unsigned int sz = texture.size();
+	if (sz == 1) {
+		return 0;
+	}
+	unsigned int i = 0;
+	unsigned int delta = (SDL_GetTicks() - startTime); // time in msec
+	// Assume 10fps;
+	i = (delta / 100) % 10; // This will assume 10 frames.
+	// Now cap to sz.
+	i = i % sz;
+	return i;
 }
 
 void Texture::render(SDL_Renderer* renderer, int x, int y) {
+	// Determine the texture to display.
+	unsigned int i = getFrame();
 	//Set rendering space and render to screen
 	SDL_Rect renderQuad = {x, y, width, height };
-	SDL_RenderCopy(renderer, texture, nullptr, &renderQuad);
+	SDL_RenderCopy(renderer, texture[i], nullptr, &renderQuad);
 }
 
 void Texture::render(SDL_Renderer* renderer, int x, int y, int x1, int x2, int y1, int y2) {
+	// Determine the texture to display.
+	unsigned int i = getFrame();
 	SDL_Rect renderQuad = {x, y, x2, y2 };
 	SDL_Rect clip = {x1, y1, x2, y2 };
-	SDL_RenderCopy(renderer, texture, &clip, &renderQuad);
+	SDL_RenderCopy(renderer, texture[i], &clip, &renderQuad);
 }
 
 const char * Texture::getLastError() {
@@ -359,10 +384,16 @@ int Texture::getHeight() {
 }
 
 void Texture::setBlendMode( SDL_BlendMode blending ) {
-	SDL_SetTextureBlendMode( texture, blending );
+	unsigned int sz = texture.size();
+	for (unsigned int i = 0; i < sz ; i++) {
+		SDL_SetTextureBlendMode( texture[i], blending );
+	}
 }
 
 void Texture::setAlpha( Uint8 alpha ) {
-	SDL_SetTextureAlphaMod( texture, alpha );
+	unsigned int sz = texture.size();
+	for (unsigned int i = 0; i < sz ; i++) {
+		SDL_SetTextureAlphaMod( texture[i], alpha );
+	}
 }
 

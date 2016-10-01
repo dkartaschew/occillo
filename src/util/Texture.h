@@ -159,7 +159,7 @@ class Texture {
 	/**
 	* @brief The texture as a SDL Texture.
 	*/
-	SDL_Texture* texture;
+	std::vector<SDL_Texture*> texture;
 	/**
 	* @brief The width of the texture
 	*/
@@ -172,6 +172,10 @@ class Texture {
 	* @brief A pointer to the last error message.
 	*/
 	const char * lastError;
+	/**
+	* @brief The start time of the animation
+	*/
+	uint32_t startTime;
 	/**
 	* @brief Load the given SVG file
 	*
@@ -204,6 +208,13 @@ class Texture {
 	* @param image The given image.
 	*/
 	void cleanup(RsvgHandle * rsvg_handle, cairo_t * cr, cairo_surface_t * cairo_surf, SDL_Surface * sdl_surface, void * image);
+
+	/**
+	* @brief Get the frame number to display
+	*
+	* @return The frame number to display.
+	*/
+	unsigned int getFrame();
 };
 
 #endif
