@@ -55,9 +55,9 @@ bool Display::init(Configuration *config, GameConfiguration* game) {
 		displayHeight = config->getDisplayHeight();
 		displayWidth = config->getDisplayWidth();
 
-	  std::string* name = game->getGameName();
+		std::string* name = game->getGameName();
 		std::string gameName;
-		if(name == nullptr){
+		if (name == nullptr) {
 			gameName = PACKAGE_NAME " " PACKAGE_VERSION;
 		} else {
 			gameName = *name;
@@ -230,7 +230,11 @@ void Display::screenshot() {
 	if (displayRenderer != nullptr) {
 		int tm = (int)time(NULL);
 		char dest[100] = "";
+#ifdef _WIN32
+		_snprintf(dest, 100, "screenshot-%d.png", tm);
+#else
 		std::snprintf(dest, 100, "screenshot-%d.png", tm);
+#endif
 		std::string dstr = dest;
 
 		SDL_Surface *sshot = SDL_CreateRGBSurface(0, displayWidth, displayHeight, 32, 0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);

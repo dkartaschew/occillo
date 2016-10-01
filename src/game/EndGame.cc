@@ -60,7 +60,11 @@ bool EndGame::Activate() {
 		// Score
 		int score = gameState->getScore();
 		char dest[100] = "";
+#ifdef _WIN32
+		_snprintf(dest, 100, _("Score: %d"), score);
+#else
 		std::snprintf(dest, 100, _("Score: %d"), score);
+#endif
 		std::string dstr = dest;
 
 		if (score > getLowestScore()) {
