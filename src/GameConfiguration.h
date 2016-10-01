@@ -68,6 +68,7 @@
 #define OCCILLO_GAMECONFIGURATION_SETTING_BRICK_HIT_INCREASE "brickHitSpeedIncreaseRatio"
 #define OCCILLO_GAMECONFIGURATION_SETTING_AWARD_LIFE "awardBonusLife"
 #define OCCILLO_GAMECONFIGURATION_SETTING_GAME_NAME "gamename"
+#define OCCILLO_GAMECONFIGURATION_SETTING_TEXTDOMAIN "textdomain"
 
 /**
 * @brief The main game configuration.
@@ -323,6 +324,14 @@ class GameConfiguration {
 	*/
 	int getAwardBonusLife();
 
+
+	/**
+	* @brief Get the text domain to utilise for this game instance.
+	*
+	* @return A pointer to a string of the text domain.
+	*/
+	std::string* getTextDomain();
+
   private:
 
 	std::string* gamename;
@@ -342,6 +351,7 @@ class GameConfiguration {
 	std::string* titlemusic;
 	std::string* credits;
 	std::string* applicationIcon;
+	std::string* textdomain;
 	int titlecolour;
 	int fontcolour;
 	int initiallives;

@@ -44,6 +44,7 @@ GameConfiguration::GameConfiguration() {
 	initiallives = 3;
 	credits = nullptr;
 	applicationIcon = nullptr;
+	textdomain = nullptr;
 
 	levelNameFadeTime = 5000;
 	gameOverFadeTime = 4000;
@@ -93,6 +94,7 @@ GameConfiguration::~GameConfiguration() {
 	delete credits;
 	delete applicationIcon;
 	delete highScoreTable;
+	delete textdomain;
 }
 
 bool GameConfiguration::load(const std::string& file) {
@@ -112,6 +114,7 @@ bool GameConfiguration::load(const std::string& file) {
 		g_info("%s[%d] : game config file loaded.", __FILE__, __LINE__);
 		try {
 			setField(keyfile, gamename, OCCILLO_GAMECONFIGURATION_SETTING_GAME_NAME);
+			setField(keyfile, textdomain, OCCILLO_GAMECONFIGURATION_SETTING_TEXTDOMAIN);
 			setField(keyfile, background, OCCILLO_GAMECONFIGURATION_SETTING_BACKGROUND);
 			setField(keyfile, font, OCCILLO_GAMECONFIGURATION_SETTING_FONT);
 			setField(keyfile, fontbold, OCCILLO_GAMECONFIGURATION_SETTING_FONTBOLD);
@@ -304,6 +307,10 @@ double GameConfiguration::getBrickHitSpeedIncreaseRatio() {
 
 int GameConfiguration::getAwardBonusLife() {
   return awardBonusLife;
+}
+
+std::string* GameConfiguration::getTextDomain(){
+  return textdomain;
 }
 
 std::string* GameConfiguration::locateBasePath() {
