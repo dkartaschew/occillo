@@ -32,6 +32,8 @@
 
 #include "config.h"
 
+#include "StringUtil.h"
+
 #define OCCILLO_DEFAULT_GAME "game/game.ini"
 #define OCCILLO_DEFAULT_FULLSCREEN false
 #define OCCILLO_DEFAULT_RES_WIDTH 720
@@ -229,6 +231,14 @@ public:
      * @return A path to the resource, or an empty string if the resource can't be found.
      */
     std::string locateResource(const std::string& resource);
+    /**
+     * @brief Locate the given resources, and return a path with the resources
+     *
+     * @param resources A delimited string of the resources to locate.
+     *
+     * @return A delimited path to the resources, or an empty string if the resource can't be found.
+     */
+    std::string locateMultiResource(const std::string& resources);
 
 private:
     /**

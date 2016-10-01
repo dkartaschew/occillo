@@ -15,6 +15,7 @@ util/HighScore.cc util/HighScore.h \
 util/HighScoreTable.cc util/HighScoreTable.h \
 util/Resolution.cc util/Resolution.h \
 util/Point.cc util/Point.h \
+util/StringUtil.cc util/StringUtil.h \
 ui/IUIWidget.h \
 ui/ItoString.h \
 ui/UIWidget.cc ui/UIWidget.h \

@@ -5,6 +5,7 @@ occillo_DATA = \
 	occillo.png \
 	background.png \
 	ball_silver.svg \
+	ball_blue.svg \
 	brick_blue.svg \
 	brick_fixed.svg \
 	brick_green.svg \

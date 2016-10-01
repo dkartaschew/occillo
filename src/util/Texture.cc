@@ -18,19 +18,6 @@
 
 #include "Texture.h"
 
-/**
-* @brief Determine if the str has the given suffix
-*
-* @param str The string to test
-* @param suffix The required suffix
-*
-* @return TRUE if 'str' has the given suffix.
-*/
-bool hasExtension(const std::string& str, const std::string &suffix) {
-	return str.size() >= suffix.size() &&
-	       str.compare(str.size() - suffix.size(), suffix.size(), suffix) == 0;
-}
-
 Texture::Texture() {
 	//Initialize
 	texture = nullptr;
@@ -50,24 +37,29 @@ bool Texture::loadFromFile(SDL_Renderer* renderer, const std::string& path) {
 }
 
 bool Texture::loadFromFile(SDL_Renderer* renderer, const std::string& path, int width, int height) {
-
-	g_info("%s[%d]: Loading file %s", __FILE__, __LINE__, path.c_str());
-
-	/*
-	 * Determine type, if SVG or other.
-	 * SVG uses cairo for rendering, other uses SDL_image...
-	 */
 	bool res = true;
-	const std::string extension = ".svg";
-	if (res && hasExtension(path, extension)) {
-		res = loadSVG(renderer, path, width, height);
-	} else {
-		res = loadPNG(renderer, path, width, height);
-	}
-	if (res) {
-		g_info("%s[%d]: Loaded file %s", __FILE__, __LINE__, path.c_str());
-	} else {
-		g_info("%s[%d]: FAILED Loaded file %s", __FILE__, __LINE__, path.c_str());
+
+	std::vector<std::string> frames = StringUtil::split(path, ';');
+	unsigned int sz = frames.size();
+	for (unsigned int i = 0; i < sz; i++) {
+		std::string frame = frames[i];
+		g_info("%s[%d]: Loading file %s", __FILE__, __LINE__, frame.c_str());
+
+		/*
+		 * Determine type, if SVG or other.
+		 * SVG uses cairo for rendering, other uses SDL_image...
+		 */
+		const std::string extension = ".svg";
+		if (res && StringUtil::hasExtension(frame, extension)) {
+			res = loadSVG(renderer, frame, width, height);
+		} else {
+			res = loadPNG(renderer, frame, width, height);
+		}
+		if (res) {
+			g_info("%s[%d]: Loaded file %s", __FILE__, __LINE__, frame.c_str());
+		} else {
+			g_info("%s[%d]: FAILED Loaded file %s", __FILE__, __LINE__, frame.c_str());
+		}
 	}
 	return res;
 }
@@ -304,15 +296,15 @@ bool Texture::loadFromText(SDL_Renderer* renderer, const std::string& text, TTF_
 	return this->texture != nullptr;
 }
 
-void Texture::setEmptyTexture(int width, int height){
-  destroy();
+void Texture::setEmptyTexture(int width, int height) {
+	destroy();
 	this->width = width;
 	this->height = height;
 }
 
 void Texture::cleanup(RsvgHandle * rsvg_handle, cairo_t * cr, cairo_surface_t * cairo_surf, SDL_Surface * sdl_surface, void * image) {
 	if (rsvg_handle != nullptr) {
-    rsvg_handle_close(rsvg_handle, nullptr);
+		rsvg_handle_close(rsvg_handle, nullptr);
 		g_object_unref(rsvg_handle);
 	}
 	if (cairo_surf != nullptr) {

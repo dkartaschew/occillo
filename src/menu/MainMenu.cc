@@ -58,7 +58,7 @@ bool MainMenu::Activate() {
 
 		// Pointer
 		text = new Texture();
-		text->loadFromFile(renderer, config->locateResource(*(game->getCursor())));
+		text->loadFromFile(renderer, config->locateResource(*(game->getCursor())), bh, bh);
 		cursor = new UICursor(text, dw, dh);
 
 		// Title.

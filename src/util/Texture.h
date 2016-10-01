@@ -21,11 +21,14 @@
 
 #include <cstdlib>
 #include <string>
+#include <vector>
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include <cairo.h>
 #include <librsvg/rsvg.h>
+
+#include "StringUtil.h"
 
 #define OCCILLO_TEXTURE_RMASK 0x00ff0000
 #define OCCILLO_TEXTURE_GMASK 0x0000ff00

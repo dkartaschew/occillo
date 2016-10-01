@@ -260,8 +260,24 @@ void Configuration::setPlayerName(const std::string& playerName) {
 	g_info("%s[%d] : Configuration: Player name %s", __FILE__, __LINE__, playerName.c_str());
 
 }
+std::string Configuration::locateMultiResource(const std::string& resources){
+	std::vector<std::string> values = StringUtil::split(resources, ';');
+	std::string result = "";
+	unsigned int sz = values.size();
+	for(unsigned int i = 0; i < sz; i++){
+	  if(i != 0){
+			result += ";";
+		}
+		result += locateResource(values[i]);				
+	}
+	return result;
+}
 
 std::string Configuration::locateResource(const std::string& resource) {
+  // If the resource contains the delimiter, then use the mulitresource locator.
+	if(resource.find(';') != std::string::npos){
+		return locateMultiResource(resource);
+	}
 
 	std::string file = resource;
 	g_info("%s[%d] : Locating resource %s", __FILE__, __LINE__, file.c_str());

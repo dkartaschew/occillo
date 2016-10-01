@@ -90,7 +90,7 @@ bool EndGame::Activate() {
 
 		// Pointer
 		text = new Texture();
-		text->loadFromFile(renderer, config->locateResource(*(game->getCursor())));
+		text->loadFromFile(renderer, config->locateResource(*(game->getCursor())), bh, bh);
 		cursor = new UICursor(text, dw, dh);
 
 		TTF_CloseFont(fontTitle);
