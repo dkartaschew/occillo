@@ -43,25 +43,27 @@ bool Texture::loadFromFile(SDL_Renderer* renderer, const std::string& path, int 
 	unsigned int sz = frames.size();
 	for (unsigned int i = 0; i < sz; i++) {
 		std::string frame = frames[i];
-		g_info("%s[%d]: Loading file %s", __FILE__, __LINE__, frame.c_str());
+		if (!frame.empty()) {
+			g_info("%s[%d]: Loading file %s", __FILE__, __LINE__, frame.c_str());
 
-		/*
-		 * Determine type, if SVG or other.
-		 * SVG uses cairo for rendering, other uses SDL_image...
-		 */
-		const std::string extension = ".svg";
-		if (res && StringUtil::hasExtension(frame, extension)) {
-			res = loadSVG(renderer, frame, width, height);
-		} else {
-			res = loadPNG(renderer, frame, width, height);
-		}
-		if (res) {
-			g_info("%s[%d]: Loaded file %s", __FILE__, __LINE__, frame.c_str());
-		} else {
-			g_info("%s[%d]: FAILED Loaded file %s", __FILE__, __LINE__, frame.c_str());
+			/*
+			 * Determine type, if SVG or other.
+			 * SVG uses cairo for rendering, other uses SDL_image...
+			 */
+			const std::string extension = ".svg";
+			if (StringUtil::hasExtension(frame, extension)) {
+				res = loadSVG(renderer, frame, width, height);
+			} else {
+				res = loadPNG(renderer, frame, width, height);
+			}
+			if (res) {
+				g_info("%s[%d]: Loaded file %s", __FILE__, __LINE__, frame.c_str());
+			} else {
+				g_info("%s[%d]: FAILED Loaded file %s", __FILE__, __LINE__, frame.c_str());
+			}
 		}
 	}
-	return res;
+	return !texture.empty();
 }
 
 bool Texture::loadPNG(SDL_Renderer* renderer, const std::string& path, int width, int height) {
