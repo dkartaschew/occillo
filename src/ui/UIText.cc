@@ -101,7 +101,7 @@ void UIText::setCenter(bool center) {
 void UIText::render(SDL_Renderer * renderer) {
     uint32_t time = SDL_GetTicks() / 1000;
 
-    if (updated) {
+    if (updated || texture == nullptr) {
         if (texture != nullptr) {
             delete texture;
         }
@@ -128,7 +128,11 @@ int UIText::getX() {
     int xloc = x;
     if (center) {
         // in center mode, the x value is the display width...
-        xloc = (x / 2) - (texture->getWidth() / 2);
+				if(texture != nullptr){
+          xloc = (x / 2) - (texture->getWidth() / 2);
+				} else {
+					xloc = (x / 2);
+				}
     }
     return xloc;
 }
@@ -139,4 +143,5 @@ std::string UIText::getText() {
 
 void UIText::setText(std::string & text) {
     this->text = text;
+		updated = true;
 }
