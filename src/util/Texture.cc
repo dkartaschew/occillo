@@ -77,6 +77,10 @@ bool Texture::loadPNG(SDL_Renderer* renderer, const std::string& path, int width
 		lastError = IMG_GetError();
 		g_info("%s[%d] : %s", __FILE__, __LINE__, lastError);
 	} else {
+		// If surface is not RGBA, then convert
+
+		// TODO: Implement.
+					
 		// scale if needed.
 		if (width != -1 || height != -1) {
 			if (width == -1) {
@@ -92,6 +96,8 @@ bool Texture::loadPNG(SDL_Renderer* renderer, const std::string& path, int width
 				SDL_FreeSurface(loadedSurface);
 				return false;
 			}
+			// Set the src as no blend mode, so we get a direct copy.
+			SDL_SetSurfaceBlendMode(loadedSurface, SDL_BLENDMODE_NONE);
 			if (SDL_BlitScaled(loadedSurface, nullptr, n, nullptr) != 0) {
 				g_info("%s[%d] : %s", __FILE__, __LINE__, SDL_GetError());
 				SDL_FreeSurface(loadedSurface);
@@ -103,8 +109,6 @@ bool Texture::loadPNG(SDL_Renderer* renderer, const std::string& path, int width
 		} else {
 			g_info("%s[%d] : Not scaling", __FILE__, __LINE__);
 		}
-		//Color key image
-		SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0, 0xFF, 0xFF));
 
 		//Create texture from surface pixels
 		newTexture = SDL_CreateTextureFromSurface(renderer, loadedSurface);
