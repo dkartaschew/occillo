@@ -77,10 +77,19 @@ bool Texture::loadPNG(SDL_Renderer* renderer, const std::string& path, int width
 		lastError = IMG_GetError();
 		g_info("%s[%d] : %s", __FILE__, __LINE__, lastError);
 	} else {
-		// If surface is not RGBA, then convert
+		// Ensure new surface is ARGB. (This is what we render SVG to, so use this here as well)
+		SDL_Surface* newSurface = SDL_ConvertSurfaceFormat(loadedSurface, SDL_PIXELFORMAT_ARGB8888, 0);
+		if(newSurface != nullptr){
+				// Converted OK, so free the old, and set the new.
+				SDL_FreeSurface(loadedSurface);
+				loadedSurface = newSurface;
+		} else {
+				// failed to convert, so exit.
+				g_info("%s[%d] : %s", __FILE__, __LINE__, SDL_GetError());
+				SDL_FreeSurface(loadedSurface);
+				return false;
+		}
 
-		// TODO: Implement.
-					
 		// scale if needed.
 		if (width != -1 || height != -1) {
 			if (width == -1) {
@@ -90,7 +99,8 @@ bool Texture::loadPNG(SDL_Renderer* renderer, const std::string& path, int width
 				height = loadedSurface->h;
 			}
 			g_info("%s[%d] : Scaling to %d %d", __FILE__, __LINE__, width, height);
-			SDL_Surface *n = SDL_CreateRGBSurface(loadedSurface->flags, width, height, loadedSurface->format->BitsPerPixel, loadedSurface->format->Rmask, loadedSurface->format->Gmask, loadedSurface->format->Bmask, loadedSurface->format->Amask);
+			SDL_Surface *n = SDL_CreateRGBSurface(loadedSurface->flags, width, height, loadedSurface->format->BitsPerPixel, 
+						loadedSurface->format->Rmask, loadedSurface->format->Gmask, loadedSurface->format->Bmask, loadedSurface->format->Amask);
 			if (n == nullptr) {
 				g_info("%s[%d] : %s", __FILE__, __LINE__, SDL_GetError());
 				SDL_FreeSurface(loadedSurface);
