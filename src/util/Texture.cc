@@ -259,6 +259,9 @@ bool Texture::loadSVG(SDL_Renderer* renderer, const std::string& path, int width
 
 bool Texture::loadFromText(SDL_Renderer* renderer, const std::string& text, TTF_Font *font, SDL_Color* colour) {
 	destroy();
+	if(renderer == nullptr || font == nullptr || colour == nullptr){
+		return false;
+	}
 	//Render text surface
 	SDL_Surface* textSurface = TTF_RenderUTF8_Blended( font, text.c_str(), *colour);
 	if ( textSurface == nullptr ) {
@@ -282,6 +285,10 @@ bool Texture::loadFromText(SDL_Renderer* renderer, const std::string& text, TTF_
 
 bool Texture::loadFromText(SDL_Renderer* renderer, const std::string& text, TTF_Font *font, SDL_Color* colour, SDL_Color* outlineColour) {
 	destroy();
+	if(renderer == nullptr || font == nullptr || colour == nullptr || outlineColour == nullptr){
+		return false;
+	}
+
 	//Render front text surface
 	SDL_Surface* textFGSurface = TTF_RenderUTF8_Blended( font, text.c_str(), *colour );
 	TTF_SetFontOutline(font, OCCILLO_OUTLINE_SIZE);
