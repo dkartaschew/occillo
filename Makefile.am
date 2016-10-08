@@ -15,7 +15,8 @@ build-tests: check
 test: 
 	@if [ "${TEST}" = "" ]; \
 	then  \
-	    ${TESTDIR}/Collision || true; \
+	    ${TESTDIR}/collision || true; \
+			${TESTDIR}/colours || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi

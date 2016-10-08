@@ -327,8 +327,8 @@ bool Texture::loadFromColour(SDL_Renderer* renderer, SDL_Color* colour, int widt
 		return false;
 	}
 	// Create the surface. (ARGB8888)
-	SDL_Surface* surface = SDL_CreateRGBSurface(0, width, height, OCCILLO_TEXTURE_BPP, 
-			OCCILLO_TEXTURE_RMASK, OCCILLO_TEXTURE_GMASK, OCCILLO_TEXTURE_BMASK, OCCILLO_TEXTURE_AMASK);
+	SDL_Surface* surface = SDL_CreateRGBSurface(0, width, height, OCCILLO_TEXTURE_BPP,
+	                       OCCILLO_TEXTURE_RMASK, OCCILLO_TEXTURE_GMASK, OCCILLO_TEXTURE_BMASK, OCCILLO_TEXTURE_AMASK);
 	if (surface == nullptr) {
 		g_info("%s[%d]: SDL_CreateRGBSurface() failed!", __FILE__, __LINE__);
 		/* Clean up: */
@@ -336,7 +336,7 @@ bool Texture::loadFromColour(SDL_Renderer* renderer, SDL_Color* colour, int widt
 		return false;
 	}
 	// And fill.
-	if(0 != SDL_FillRect(surface, NULL, SDL_MapRGBA(surface->format, colour->r, colour->g, colour->b, colour->a))){
+	if (0 != SDL_FillRect(surface, NULL, SDL_MapRGBA(surface->format, colour->r, colour->g, colour->b, colour->a))) {
 		g_info("%s[%d] : Unable to fill surface %s", __FILE__, __LINE__, SDL_GetError());
 		/* Clean up: */
 		SDL_FreeSurface( surface );
@@ -466,15 +466,33 @@ void Texture::setAlpha( Uint8 alpha ) {
 	}
 }
 
-SDL_Color* Texture::getColour(){
+SDL_Color* Texture::getColour() {
 	static SDL_Color col;
 	col.a = 255;
-	col.r += 64;
-	if(col.r == 0){
-		col.g += 64;
+	if (col.r == 192) {
+		col.r += 63;
+	} else if (col.r == 255) {
+		col.r = 0;
+	} else {
+		col.r += 64;
 	}
-	if(col.g == 0){
-		col.b += 64;
+	if (col.r == 0) {
+		if (col.g == 192) {
+			col.g += 63;
+		} else if (col.g == 255) {
+			col.g = 0;
+		} else {
+			col.g += 64;
+		}
+		if (col.g == 0) {
+			if (col.b == 192) {
+				col.b += 63;
+			} else if (col.b == 255) {
+				col.b = 0;
+			} else {
+				col.b += 64;
+			}
+		}
 	}
 	return &col;
 }
