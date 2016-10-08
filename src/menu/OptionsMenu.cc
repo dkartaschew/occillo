@@ -78,9 +78,15 @@ bool OptionsMenu::Activate() {
 
 		// Add in selection UI widget.
 		Texture* textPrev = new Texture();
-		textPrev->loadFromFile(renderer, config->locateResource(*(game->getSelectPrevious())), btnH, btnH);
+		if (!textPrev->loadFromFile(renderer, config->locateResource(*(game->getSelectPrevious())), btnH, btnH)) {
+			g_info("%s[%d] : Failed to create text prev button texture, setting as missing texture.", __FILE__, __LINE__);
+			textPrev->loadFromColour(renderer, Texture::getColour(), btnH, btnH);
+		}
 		Texture* textNext = new Texture();
-		textNext->loadFromFile(renderer, config->locateResource(*(game->getSelectNext())), btnH, btnH);
+		if (!textNext->loadFromFile(renderer, config->locateResource(*(game->getSelectNext())), btnH, btnH)) {
+			g_info("%s[%d] : Failed to create text next button texture, setting as missing texture.", __FILE__, __LINE__);
+			textNext->loadFromColour(renderer, Texture::getColour(), btnH, btnH);
+		}
 		resolutionControl = new UISelection<Resolution>(textPrev, textNext, res, renderer, fontLabel,
 		        game->getTitleFontColour(), menuA, menuNA);
 		resolutionControl->setXY(bw * 17, bh * 5);
@@ -90,9 +96,15 @@ bool OptionsMenu::Activate() {
 
 		// Fullscreen checkbox.
 		Texture* textActive = new Texture();
-		textActive->loadFromFile(renderer, config->locateResource(*(game->getCheckboxActive())), btnH, btnH);
+		if (!textActive->loadFromFile(renderer, config->locateResource(*(game->getCheckboxActive())), btnH, btnH)) {
+			g_info("%s[%d] : Failed to create text active button texture, setting as missing texture.", __FILE__, __LINE__);
+			textActive->loadFromColour(renderer, Texture::getColour(), btnH, btnH);
+		}
 		Texture* textInactive = new Texture();
-		textInactive->loadFromFile(renderer, config->locateResource(*(game->getCheckboxInactive())), btnH, btnH);
+		if (!textInactive->loadFromFile(renderer, config->locateResource(*(game->getCheckboxInactive())), btnH, btnH)) {
+			g_info("%s[%d] : Failed to create text inactive button texture, setting as missing texture.", __FILE__, __LINE__);
+			textInactive->loadFromColour(renderer, Texture::getColour(), btnH, btnH);
+		}
 		fullscreenControl = new UICheckBox(textActive, textInactive, menuA, menuNA);
 		fullscreenControl->setXY(bw * 17, bh * 6);
 		fullscreenControl->setActive(config->isFullscreen());
@@ -101,11 +113,20 @@ bool OptionsMenu::Activate() {
 
 		// Effects Volume
 		Texture* textMinus = new Texture();
-		textMinus->loadFromFile(renderer, config->locateResource(*(game->getSelectPrevious())), btnH, btnH);
+		if (!textMinus->loadFromFile(renderer, config->locateResource(*(game->getSelectPrevious())), btnH, btnH)) {
+			g_info("%s[%d] : Failed to create text minus button texture, setting as missing texture.", __FILE__, __LINE__);
+			textMinus->loadFromColour(renderer, Texture::getColour(), btnH, btnH);
+		}
 		Texture* textPlus = new Texture();
-		textPlus->loadFromFile(renderer, config->locateResource(*(game->getSelectNext())), btnH, btnH);
+		if (!textPlus->loadFromFile(renderer, config->locateResource(*(game->getSelectNext())), btnH, btnH)) {
+			g_info("%s[%d] : Failed to create text plus button texture, setting as missing texture.", __FILE__, __LINE__);
+			textPlus->loadFromColour(renderer, Texture::getColour(), btnH, btnH);
+		}
 		Texture* textSlider = new Texture();
-		textSlider->loadFromFile(renderer, config->locateResource(*(game->getSliderImage())), bh * 4, btnH);
+		if (!textSlider->loadFromFile(renderer, config->locateResource(*(game->getSliderImage())), bh * 4, btnH)) {
+			g_info("%s[%d] : Failed to create slider button texture, setting as missing texture.", __FILE__, __LINE__);
+			textSlider->loadFromColour(renderer, Texture::getColour(), bh * 4, btnH);
+		}
 		volumeEffectControl = new UISlider(textMinus, textPlus, textSlider, 0, MIX_MAX_VOLUME, MIX_MAX_VOLUME / 16,
 		                                   menuA, menuNA);
 		volumeEffectControl->setXY(bw * 17, bh * 8);
@@ -115,11 +136,20 @@ bool OptionsMenu::Activate() {
 
 		// Music Volume
 		textMinus = new Texture();
-		textMinus->loadFromFile(renderer, config->locateResource(*(game->getSelectPrevious())), btnH, btnH);
+		if (!textMinus->loadFromFile(renderer, config->locateResource(*(game->getSelectPrevious())), btnH, btnH)) {
+			g_info("%s[%d] : Failed to create text minus button texture, setting as missing texture.", __FILE__, __LINE__);
+			textMinus->loadFromColour(renderer, Texture::getColour(), btnH, btnH);
+		}
 		textPlus = new Texture();
-		textPlus->loadFromFile(renderer, config->locateResource(*(game->getSelectNext())), btnH, btnH);
+		if (!textPlus->loadFromFile(renderer, config->locateResource(*(game->getSelectNext())), btnH, btnH)) {
+			g_info("%s[%d] : Failed to create text plus button texture, setting as missing texture.", __FILE__, __LINE__);
+			textPlus->loadFromColour(renderer, Texture::getColour(), btnH, btnH);
+		}
 		textSlider = new Texture();
-		textSlider->loadFromFile(renderer, config->locateResource(*(game->getSliderImage())), bh * 4, btnH);
+		if (!textSlider->loadFromFile(renderer, config->locateResource(*(game->getSliderImage())), bh * 4, btnH)) {
+			g_info("%s[%d] : Failed to create slider button texture, setting as missing texture.", __FILE__, __LINE__);
+			textSlider->loadFromColour(renderer, Texture::getColour(), bh * 4, btnH);
+		}
 		volumeMusicControl = new UISlider(textMinus, textPlus, textSlider, 0, MIX_MAX_VOLUME, MIX_MAX_VOLUME / 16,
 		                                  menuA, menuNA);
 		volumeMusicControl->setXY(bw * 17, bh * 9);
@@ -129,14 +159,20 @@ bool OptionsMenu::Activate() {
 
 		// Apply button
 		Texture* text = new Texture();
-		text->loadFromText(renderer, _("Apply"), font, game->getFontColour());
+		if (!text->loadFromText(renderer, _("Apply"), font, game->getFontColour())) {
+			g_info("%s[%d] : Failed to create Apply button texture, setting as missing texture.", __FILE__, __LINE__);
+			text->loadFromColour(renderer, Texture::getColour(), btnH, btnH);
+		}
 		btnApply = new UIButton(text, (dw / 2) - text->getWidth() - (bh / 2), bh * (MENU_ROWS - 3), menuA, menuNA);
 		btnApply->addEventListener(this);
 		widgets->push_back(btnApply);
 
 		// Return button
 		text = new Texture();
-		text->loadFromText(renderer, _("Return"), font, game->getFontColour());
+		if (!text->loadFromText(renderer, _("Return"), font, game->getFontColour())) {
+			g_info("%s[%d] : Failed to create Return button texture, setting as missing texture.", __FILE__, __LINE__);
+			text->loadFromColour(renderer, Texture::getColour(), btnH, btnH);
+		}
 		btnReturn = new UIButton(text, (dw / 2) + (bh / 2), bh * (MENU_ROWS - 3), menuA, menuNA);
 		btnReturn->addEventListener(this);
 		widgets->push_back(btnReturn);

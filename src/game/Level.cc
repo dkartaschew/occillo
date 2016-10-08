@@ -311,7 +311,13 @@ bool Level::loadFromFile(const std::string& path) {
 	getline(lvl, line);
 	line = config->locateResource(line);
 	g_info("%s[%d] : Texture %d name: %s", __FILE__, __LINE__, 0, line.c_str());
-	textures->add(0, renderer, line, config->getDisplayWidth(), config->getDisplayHeight());
+	if (!textures->add(0, renderer, line, config->getDisplayWidth(), config->getDisplayHeight())) {
+		g_info("%s[%d] : Failed to load background texture name: %s, setting as missing texture.", __FILE__, __LINE__, line.c_str());
+		Texture* t = new Texture();
+		t->loadFromColour(renderer, Texture::getColour(), config->getDisplayWidth(), config->getDisplayHeight());
+		textures->add(0, t);
+	}
+
 	// load the textures
 	for (int i = 1; i < textureCount; i++) {
 		if (!std::getline(lvl, line)) {
@@ -320,15 +326,12 @@ bool Level::loadFromFile(const std::string& path) {
 			return false;
 		}
 		g_info("%s[%d] : Texture %d name: %s", __FILE__, __LINE__, i, line.c_str());
-		/*
-		 * Determine if file exists... if not, then try to prepend config->getDataPath() to it.
-		 */
 		line = config->locateResource(line);
-		bool res = g_file_test(line.c_str(), G_FILE_TEST_EXISTS);
-		if (res) {
-			textures->add(i, renderer, line, brickWidth, brickHeight);
-		} else {
-			g_warning("%s[%d] : Texture %d name: %s missing!", __FILE__, __LINE__, i, line.c_str());
+		if (!textures->add(i, renderer, line, brickWidth, brickHeight)) {
+			g_info("%s[%d] : Failed to load texture %d name: %s, setting as missing texture.", __FILE__, __LINE__, i, line.c_str());
+			Texture* t = new Texture();
+			t->loadFromColour(renderer, Texture::getColour(), brickWidth, brickHeight);
+			textures->add(i, t);
 		}
 	}
 
@@ -364,9 +367,14 @@ bool Level::loadFromFile(const std::string& path) {
 	 */
 	g_info("%s[%d] : Load Paddle %s", __FILE__, __LINE__, gameConfig->getPaddleImage()->c_str());
 	Texture* text = new Texture();
-	text->loadFromFile(renderer, config->locateResource(*(gameConfig->getPaddleImage())),
-	                   brickWidth * gameConfig->getPaddleWidthRatio(),
-	                   brickHeight * gameConfig->getPaddleHeightRatio());
+	if (!text->loadFromFile(renderer, config->locateResource(*(gameConfig->getPaddleImage())),
+	                        brickWidth * gameConfig->getPaddleWidthRatio(),
+	                        brickHeight * gameConfig->getPaddleHeightRatio())) {
+		g_info("%s[%d] : Failed to load paddle texture name: %s, setting as missing texture.", __FILE__, __LINE__, line.c_str());
+		text->loadFromColour(renderer, Texture::getColour(),
+		                     brickWidth * gameConfig->getPaddleWidthRatio(),
+		                     brickHeight * gameConfig->getPaddleHeightRatio());
+	}
 
 	paddle = new Paddle(text,
 	                    config->getDisplayWidth() / 2 - text->getWidth() / 2,
@@ -379,9 +387,15 @@ bool Level::loadFromFile(const std::string& path) {
 	 * Ball
 	 */
 	text = new Texture();
-	text->loadFromFile(renderer, config->locateResource(*(gameConfig->getBallImage())),
-	                   brickHeight * gameConfig->getBallSizeRatio(),
-	                   brickHeight * gameConfig->getBallSizeRatio());
+	if (!text->loadFromFile(renderer, config->locateResource(*(gameConfig->getBallImage())),
+	                        brickHeight * gameConfig->getBallSizeRatio(),
+	                        brickHeight * gameConfig->getBallSizeRatio())) {
+		g_info("%s[%d] : Failed to load ball texture name: %s, setting as missing texture.", __FILE__, __LINE__, line.c_str());
+		text->loadFromColour(renderer, Texture::getColour(),
+		                     brickWidth * gameConfig->getBallSizeRatio(),
+		                     brickHeight * gameConfig->getBallSizeRatio());
+
+	}
 	ball = new Ball(text, brickWidth, brickHeight, (config->getDisplayHeight() * 2) / 3);
 
 	/*
@@ -396,7 +410,13 @@ bool Level::loadFromFile(const std::string& path) {
 	 * Level name
 	 */
 	text = new Texture();
-	text->loadFromText(renderer, _(levelName.c_str()), fontTitle, gameConfig->getFontColour(), gameConfig->getTitleFontColour());
+	if (!text->loadFromText(renderer, _(levelName.c_str()), fontTitle, gameConfig->getFontColour(), gameConfig->getTitleFontColour())) {
+		g_info("%s[%d] : Failed to create level name, setting as missing texture.", __FILE__, __LINE__);
+		text->loadFromColour(renderer, Texture::getColour(),
+		                     brickWidth * gameConfig->getTitleSizeRatio(),
+		                     brickHeight * gameConfig->getTitleSizeRatio());
+
+	}
 	text->setBlendMode(SDL_BLENDMODE_BLEND);
 	int x = config->getDisplayWidth() / 2 - text->getWidth() / 2;
 	int y = config->getDisplayHeight() / 2 - text->getHeight() / 2;
@@ -550,7 +570,13 @@ void Level::updateState() {
 			 */
 			std::string gameOver = _("Game Over");
 			Texture *text = new Texture();
-			text->loadFromText(renderer, gameOver, fontTitle, gameConfig->getFontColour(), gameConfig->getTitleFontColour());
+			if (!text->loadFromText(renderer, gameOver, fontTitle, gameConfig->getFontColour(), gameConfig->getTitleFontColour())) {
+				g_info("%s[%d] : Failed to create game over texture, setting as missing texture.", __FILE__, __LINE__);
+				text->loadFromColour(renderer, Texture::getColour(),
+				                     ball->getWidth() * gameConfig->getTitleSizeRatio(),
+				                     ball->getHeight() * gameConfig->getTitleSizeRatio());
+
+			}
 			text->setBlendMode(SDL_BLENDMODE_BLEND);
 			int x = config->getDisplayWidth() / 2 - text->getWidth() / 2;
 			int y = config->getDisplayHeight() / 2 - text->getHeight() / 2;
@@ -727,14 +753,21 @@ Texture* Level::createStringTexture(const std::string & str, const int value, TT
 	std::string dstr = dest;
 
 	Texture* text = new Texture();
-	text->loadFromText(renderer, dstr, font, gameConfig->getTitleFontColour());
+	if (!text->loadFromText(renderer, dstr, font, gameConfig->getTitleFontColour())) {
+		g_info("%s[%d] : Failed to create string texture, setting as missing texture.", __FILE__, __LINE__);
+		text->loadFromColour(renderer, Texture::getColour(), 16, 16);
+	}
 	text->setBlendMode(SDL_BLENDMODE_BLEND);
 	return text;
 }
 
 void Level::createBonusAnimation(const std::string& str, Brick* brick, uint32_t animationTime) {
 	Texture *text = new Texture();
-	text->loadFromText(renderer, str, fontBonus, gameConfig->getFontColour(), gameConfig->getTitleFontColour());
+	if (!text->loadFromText(renderer, str, fontBonus, gameConfig->getFontColour(), gameConfig->getTitleFontColour())) {
+		g_info("%s[%d] : Failed to create string texture, setting as missing texture.", __FILE__, __LINE__);
+		text->loadFromColour(renderer, Texture::getColour(), 16, 16);
+
+	}
 	text->setBlendMode(SDL_BLENDMODE_BLEND);
 	int x = brick->getX() + (brick->getWidth() / 2 - text->getWidth() / 2);
 	int y = brick->getY() + (brick->getHeight() / 2 - text->getHeight() / 2);
@@ -743,7 +776,10 @@ void Level::createBonusAnimation(const std::string& str, Brick* brick, uint32_t 
 
 void Level::createBonusAnimation(const std::string& str, int x, int y, uint32_t animationTime) {
 	Texture *text = new Texture();
-	text->loadFromText(renderer, str, fontBonus, gameConfig->getFontColour(), gameConfig->getTitleFontColour());
+	if (!text->loadFromText(renderer, str, fontBonus, gameConfig->getFontColour(), gameConfig->getTitleFontColour())) {
+		g_info("%s[%d] : Failed to create bonus animation string texture, setting as missing texture.", __FILE__, __LINE__);
+		text->loadFromColour(renderer, Texture::getColour(), 16, 16);
+	}
 	text->setBlendMode(SDL_BLENDMODE_BLEND);
 	animations.push_back(new TextureFadeAnimation(text, x, y, animationTime, config->getDisplayHeight() / bricksHigh));
 
@@ -897,7 +933,13 @@ void Level::handleCollision(Brick* brick) {
 
 			Texture *text = new Texture();
 			std::string value = _("+1 Life");
-			text->loadFromText(renderer, value, fontTitle, gameConfig->getFontColour(), gameConfig->getTitleFontColour());
+			if (!text->loadFromText(renderer, value, fontTitle, gameConfig->getFontColour(), gameConfig->getTitleFontColour())) {
+				g_info("%s[%d] : Failed to create bonus life texture, setting as missing texture.", __FILE__, __LINE__);
+				text->loadFromColour(renderer, Texture::getColour(),
+				                     brick->getWidth() * gameConfig->getTitleSizeRatio(),
+				                     brick->getHeight() * gameConfig->getTitleSizeRatio());
+
+			}
 			text->setBlendMode(SDL_BLENDMODE_BLEND);
 			int x = config->getDisplayWidth() / 2 - text->getWidth() / 2;
 			int y = config->getDisplayHeight() / 2 - text->getHeight() / 2;

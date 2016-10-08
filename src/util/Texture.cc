@@ -79,15 +79,15 @@ bool Texture::loadPNG(SDL_Renderer* renderer, const std::string& path, int width
 	} else {
 		// Ensure new surface is ARGB. (This is what we render SVG to, so use this here as well)
 		SDL_Surface* newSurface = SDL_ConvertSurfaceFormat(loadedSurface, SDL_PIXELFORMAT_ARGB8888, 0);
-		if(newSurface != nullptr){
-				// Converted OK, so free the old, and set the new.
-				SDL_FreeSurface(loadedSurface);
-				loadedSurface = newSurface;
+		if (newSurface != nullptr) {
+			// Converted OK, so free the old, and set the new.
+			SDL_FreeSurface(loadedSurface);
+			loadedSurface = newSurface;
 		} else {
-				// failed to convert, so exit.
-				g_info("%s[%d] : %s", __FILE__, __LINE__, SDL_GetError());
-				SDL_FreeSurface(loadedSurface);
-				return false;
+			// failed to convert, so exit.
+			g_info("%s[%d] : %s", __FILE__, __LINE__, SDL_GetError());
+			SDL_FreeSurface(loadedSurface);
+			return false;
 		}
 
 		// scale if needed.
@@ -99,8 +99,8 @@ bool Texture::loadPNG(SDL_Renderer* renderer, const std::string& path, int width
 				height = loadedSurface->h;
 			}
 			g_info("%s[%d] : Scaling to %d %d", __FILE__, __LINE__, width, height);
-			SDL_Surface *n = SDL_CreateRGBSurface(loadedSurface->flags, width, height, loadedSurface->format->BitsPerPixel, 
-						loadedSurface->format->Rmask, loadedSurface->format->Gmask, loadedSurface->format->Bmask, loadedSurface->format->Amask);
+			SDL_Surface *n = SDL_CreateRGBSurface(loadedSurface->flags, width, height, loadedSurface->format->BitsPerPixel,
+			                                      loadedSurface->format->Rmask, loadedSurface->format->Gmask, loadedSurface->format->Bmask, loadedSurface->format->Amask);
 			if (n == nullptr) {
 				g_info("%s[%d] : %s", __FILE__, __LINE__, SDL_GetError());
 				SDL_FreeSurface(loadedSurface);
@@ -259,7 +259,7 @@ bool Texture::loadSVG(SDL_Renderer* renderer, const std::string& path, int width
 
 bool Texture::loadFromText(SDL_Renderer* renderer, const std::string& text, TTF_Font *font, SDL_Color* colour) {
 	destroy();
-	if(renderer == nullptr || font == nullptr || colour == nullptr){
+	if (renderer == nullptr || font == nullptr || colour == nullptr) {
 		return false;
 	}
 	//Render text surface
@@ -285,7 +285,7 @@ bool Texture::loadFromText(SDL_Renderer* renderer, const std::string& text, TTF_
 
 bool Texture::loadFromText(SDL_Renderer* renderer, const std::string& text, TTF_Font *font, SDL_Color* colour, SDL_Color* outlineColour) {
 	destroy();
-	if(renderer == nullptr || font == nullptr || colour == nullptr || outlineColour == nullptr){
+	if (renderer == nullptr || font == nullptr || colour == nullptr || outlineColour == nullptr) {
 		return false;
 	}
 
@@ -319,6 +319,46 @@ bool Texture::loadFromText(SDL_Renderer* renderer, const std::string& text, TTF_
 	}
 	//Return success
 	return !texture.empty();
+}
+
+bool Texture::loadFromColour(SDL_Renderer* renderer, SDL_Color* colour, int width, int height) {
+	destroy();
+	if (renderer == nullptr || colour == nullptr) {
+		return false;
+	}
+	// Create the surface. (ARGB8888)
+	SDL_Surface* surface = SDL_CreateRGBSurface(0, width, height, OCCILLO_TEXTURE_BPP, 
+			OCCILLO_TEXTURE_RMASK, OCCILLO_TEXTURE_GMASK, OCCILLO_TEXTURE_BMASK, OCCILLO_TEXTURE_AMASK);
+	if (surface == nullptr) {
+		g_info("%s[%d]: SDL_CreateRGBSurface() failed!", __FILE__, __LINE__);
+		/* Clean up: */
+		//SDL_FreeSurface( surface );
+		return false;
+	}
+	// And fill.
+	if(0 != SDL_FillRect(surface, NULL, SDL_MapRGBA(surface->format, colour->r, colour->g, colour->b, colour->a))){
+		g_info("%s[%d] : Unable to fill surface %s", __FILE__, __LINE__, SDL_GetError());
+		/* Clean up: */
+		SDL_FreeSurface( surface );
+		return false;
+
+	}
+
+	// Convert to texture;
+	SDL_Texture* t = SDL_CreateTextureFromSurface( renderer, surface );
+	if ( t == nullptr ) {
+		g_info("%s[%d] : Unable to create texture %s", __FILE__, __LINE__, SDL_GetError());
+	} else {
+		//Get image dimensions
+		this->texture.push_back(t);
+		this->width = surface->w;
+		this->height = surface->h;
+	} //Get rid of old surface
+	SDL_FreeSurface( surface );
+
+	//Return success
+	return !texture.empty();
+
 }
 
 void Texture::setEmptyTexture(int width, int height) {
@@ -364,7 +404,7 @@ void Texture::destroy() {
 
 unsigned int Texture::getFrame() {
 	const unsigned int sz = texture.size();
-	if (sz == 1) {
+	if (sz <= 1) {
 		return 0;
 	}
 	unsigned int i = 0;
@@ -377,6 +417,9 @@ unsigned int Texture::getFrame() {
 }
 
 void Texture::render(SDL_Renderer* renderer, int x, int y) {
+	if (texture.empty()) {
+		return;
+	}
 	// Determine the texture to display.
 	unsigned int i = getFrame();
 	//Set rendering space and render to screen
@@ -385,6 +428,9 @@ void Texture::render(SDL_Renderer* renderer, int x, int y) {
 }
 
 void Texture::render(SDL_Renderer* renderer, int x, int y, int x1, int x2, int y1, int y2) {
+	if (texture.empty()) {
+		return;
+	}
 	// Determine the texture to display.
 	unsigned int i = getFrame();
 	SDL_Rect renderQuad = {x, y, x2, y2 };
@@ -420,3 +466,15 @@ void Texture::setAlpha( Uint8 alpha ) {
 	}
 }
 
+SDL_Color* Texture::getColour(){
+	static SDL_Color col;
+	col.a = 255;
+	col.r += 64;
+	if(col.r == 0){
+		col.g += 64;
+	}
+	if(col.g == 0){
+		col.b += 64;
+	}
+	return &col;
+}

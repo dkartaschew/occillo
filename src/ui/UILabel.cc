@@ -23,8 +23,11 @@ UILabel::UILabel(const std::string& text, TTF_Font* font, SDL_Color* colour, SDL
 	y = 0;
 	listener = nullptr;
 	texture = new Texture();
-	texture->loadFromText(renderer, text, font, colour);
-        focus = false;
+	if (!texture->loadFromText(renderer, text, font, colour)) {
+		g_info("%s[%d] : Failed to create Label texture, setting as missing texture.", __FILE__, __LINE__);
+		texture->loadFromColour(renderer, Texture::getColour(), 16, 16);
+	}
+	focus = false;
 }
 
 void UILabel::setText(const std::string& text, TTF_Font* font, SDL_Color* colour, SDL_Renderer* renderer) {
@@ -32,12 +35,15 @@ void UILabel::setText(const std::string& text, TTF_Font* font, SDL_Color* colour
 		delete texture;
 	}
 	texture = new Texture();
-	texture->loadFromText(renderer, text, font, colour);
+	if (!texture->loadFromText(renderer, text, font, colour)) {
+		g_info("%s[%d] : Failed to create Label texture, setting as missing texture.", __FILE__, __LINE__);
+		texture->loadFromColour(renderer, Texture::getColour(), 16, 16);
+	}
 }
 
 void UILabel::event(Event e, void* data) {
 	UNUSED(e);
-        UNUSED(data);
+	UNUSED(data);
 	// NOP
 }
 
@@ -45,7 +51,7 @@ void UILabel::render(SDL_Renderer* renderer) {
 	texture->render(renderer, x, y);
 }
 
-bool UILabel::canFocus(){
-    return false;
+bool UILabel::canFocus() {
+	return false;
 }
 

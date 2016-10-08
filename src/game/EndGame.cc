@@ -44,12 +44,18 @@ bool EndGame::Activate() {
 
 		// Background
 		Texture * text = new Texture();
-		text->loadFromFile(renderer, config->locateResource(*(game->getBackground())), dw, dh);
+		if (!text->loadFromFile(renderer, config->locateResource(*(game->getBackground())), dw, dh)) {
+			g_info("%s[%d] : Failed to create background texture, setting as missing texture.", __FILE__, __LINE__);
+			text->loadFromColour(renderer, Texture::getColour(), dw, dh);
+		}
 		background = new UIImage(text);
 
 		// Return button
 		text = new Texture();
-		text->loadFromText(renderer, _("OK"), font, game->getFontColour());
+		if (!text->loadFromText(renderer, _("OK"), font, game->getFontColour())) {
+			g_info("%s[%d] : Failed to create OK button texture, setting as missing texture.", __FILE__, __LINE__);
+			text->loadFromColour(renderer, Texture::getColour(), 16, 16);
+		}
 		IUIWidget* widget = new UIButton(text, (dw / 2) - (text->getWidth() / 2), bh * 15);
 		widgets->push_back(widget);
 		widget->addEventListener(this);
@@ -90,7 +96,10 @@ bool EndGame::Activate() {
 
 		// Pointer
 		text = new Texture();
-		text->loadFromFile(renderer, config->locateResource(*(game->getCursor())), bh, bh);
+		if(!text->loadFromFile(renderer, config->locateResource(*(game->getCursor())), bh, bh)){
+			g_info("%s[%d] : Failed to create cursor texture, setting as missing texture.", __FILE__, __LINE__);
+			text->loadFromColour(renderer, Texture::getColour(), bh, bh);
+		}
 		cursor = new UICursor(text, dw, dh);
 
 		TTF_CloseFont(fontTitle);

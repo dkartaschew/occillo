@@ -43,28 +43,34 @@ bool MainMenu::Activate() {
 		const int menuA = config->getMenuFocusAlpha();
 		const int menuNA = config->getMenuNonFocusAlpha();
 		// Set the height of the version string to be 10, or half of brick height.
-		const int vh = (bh / 2) > 10 ? 10 : (bh /2); 
+		const int vh = (bh / 2) > 10 ? 10 : (bh / 2);
 
 		TTF_Font* fontTitle = TTF_OpenFont(config->locateResource(*(game->getFontBold())).c_str(), (bh * game->getTitleSizeRatio()));
 		TTF_Font* font = TTF_OpenFont(config->locateResource(*(game->getFont())).c_str(), bh);
 		TTF_Font* fontVersion = TTF_OpenFont(config->locateResource(*(game->getFont())).c_str(), vh);
-		
+
 		widgets = new std::vector<IUIWidget*>();
 
 		// Background
 		Texture* text = new Texture();
-		text->loadFromFile(renderer, config->locateResource(*(game->getBackground())), dw, dh);
+		if (!text->loadFromFile(renderer, config->locateResource(*(game->getBackground())), dw, dh)) {
+			g_info("%s[%d] : Failed to create background texture, setting as missing texture.", __FILE__, __LINE__);
+			text->loadFromColour(renderer, Texture::getColour(), dw, dh);
+		}
 		background = new UIImage(text);
 
 		// Pointer
 		text = new Texture();
-		text->loadFromFile(renderer, config->locateResource(*(game->getCursor())), bh, bh);
+		if (!text->loadFromFile(renderer, config->locateResource(*(game->getCursor())), bh, bh)) {
+			g_info("%s[%d] : Failed to create cursor texture, setting as missing texture.", __FILE__, __LINE__);
+			text->loadFromColour(renderer, Texture::getColour(), bh, bh);
+		}
 		cursor = new UICursor(text, dw, dh);
 
 		// Title.
 		std::string* name = game->getGameName();
 		std::string gameName;
-		if(name == nullptr){
+		if (name == nullptr) {
 			gameName = PACKAGE_NAME;
 		} else {
 			gameName = *name;
@@ -72,40 +78,55 @@ bool MainMenu::Activate() {
 		IUIWidget* widget = new UILabel(_(gameName.c_str()), fontTitle, game->getTitleFontColour(), renderer);
 		widget->setXY((dw / 2) - (widget->getWidth() / 2), bh * 3);
 		widgets->push_back(widget);
-		
+
 		// Start of menu options.
 		text = new Texture();
-		text->loadFromText(renderer, _("Play"), font, game->getFontColour());
+		if (!text->loadFromText(renderer, _("Play"), font, game->getFontColour())) {
+			g_info("%s[%d] : Failed to create Play Button texture, setting as missing texture.", __FILE__, __LINE__);
+			text->loadFromColour(renderer, Texture::getColour(), bh, bh);
+		}
 		widget = new UIButton(text, (dw / 2) - (text->getWidth() / 2), bh * 6, menuA, menuNA);
 		widgets->push_back(widget);
 		widget->addEventListener(this);
 
 		text = new Texture();
-		text->loadFromText(renderer, _("High Scores"), font, game->getFontColour());
+		if (!text->loadFromText(renderer, _("High Scores"), font, game->getFontColour())) {
+			g_info("%s[%d] : Failed to create High Score Button texture, setting as missing texture.", __FILE__, __LINE__);
+			text->loadFromColour(renderer, Texture::getColour(), bh, bh);
+		}
 		widget = new UIButton(text, (dw / 2) - (text->getWidth() / 2), bh * 8, menuA, menuNA);
 		widgets->push_back(widget);
 		widget->addEventListener(this);
 
 		text = new Texture();
-		text->loadFromText(renderer, _("Options"), font, game->getFontColour());
+		if (!text->loadFromText(renderer, _("Options"), font, game->getFontColour())) {
+			g_info("%s[%d] : Failed to create Options Button texture, setting as missing texture.", __FILE__, __LINE__);
+			text->loadFromColour(renderer, Texture::getColour(), bh, bh);
+		}
 		widget = new UIButton(text, (dw / 2) - (text->getWidth() / 2), bh * 10, menuA, menuNA);
 		widgets->push_back(widget);
 		widget->addEventListener(this);
 
 		text = new Texture();
-		text->loadFromText(renderer, _("Credits"), font, game->getFontColour());
+		if (!text->loadFromText(renderer, _("Credits"), font, game->getFontColour())) {
+			g_info("%s[%d] : Failed to create Credits Button texture, setting as missing texture.", __FILE__, __LINE__);
+			text->loadFromColour(renderer, Texture::getColour(), bh, bh);
+		}
 		widget = new UIButton(text, (dw / 2) - (text->getWidth() / 2), bh * 12, menuA, menuNA);
 		widgets->push_back(widget);
 		widget->addEventListener(this);
 
 		text = new Texture();
-		text->loadFromText(renderer, _("Quit"), font, game->getFontColour());
+		if (!text->loadFromText(renderer, _("Quit"), font, game->getFontColour())) {
+			g_info("%s[%d] : Failed to create Quit Button texture, setting as missing texture.", __FILE__, __LINE__);
+			text->loadFromColour(renderer, Texture::getColour(), bh, bh);
+		}
 		widget = new UIButton(text, (dw / 2) - (text->getWidth() / 2), bh * 14, menuA, menuNA);
 		widgets->push_back(widget);
 		widget->addEventListener(this);
-		
+
 		// Version information
-		 widget = new UILabel((PACKAGE_NAME " " PACKAGE_VERSION), fontVersion, game->getTitleFontColour(), renderer);
+		widget = new UILabel((PACKAGE_NAME " " PACKAGE_VERSION), fontVersion, game->getTitleFontColour(), renderer);
 		widget->setXY(dw - (widget->getWidth() + 1), dh - (widget->getHeight() + 1));
 		widgets->push_back(widget);
 

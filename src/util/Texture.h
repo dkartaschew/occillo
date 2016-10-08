@@ -93,6 +93,17 @@ class Texture {
 	*/
 	bool loadFromText(SDL_Renderer* renderer, const std::string& text, TTF_Font *font, SDL_Color* colour, SDL_Color* outlineColour);
 	/**
+	* @brief Set the texture to be a single colour. This is primarily useful for missing images or missing text/font.
+	*
+	* @param renderer The SDL renderer to use,
+	* @param colour The SDL Colour to use to set the texture to.
+	* @param width The width the texture should be scaled to.
+	* @param height The height of the texture should be scaled to.
+	*
+	* @return TRUE if the text rendered correctly to a texture.
+	*/
+	bool loadFromColour(SDL_Renderer* renderer, SDL_Color* colour, int width, int height);
+	/**
 	* @brief Destroy/clear all internal resources of the texture.
 	*/
 	void destroy();
@@ -154,6 +165,12 @@ class Texture {
 	 * @param height The texture height
 	 */
 	void setEmptyTexture(int width, int height);
+	/**
+	* @brief Get the next colour to use for missing textures.
+	*
+	* @return An appropriate colour for missing textures.
+	*/
+	static SDL_Color* getColour();
 
   private:
 	/**

@@ -70,7 +70,10 @@ bool CreditsMenu::Activate() {
 		}
 
 		Texture* text = new Texture();
-		text->loadFromText(renderer, _("Return"), font, game->getFontColour());
+		if(!text->loadFromText(renderer, _("Return"), font, game->getFontColour())){
+			g_info("%s[%d] : Failed to create Return button texture, setting as missing texture.", __FILE__, __LINE__);
+			text->loadFromColour(renderer, Texture::getColour(), 16, 16);
+		}
 		IUIWidget* widget = new UIButton(text, (dw / 2) - (text->getWidth() / 2), bh * (MENU_ROWS - 3),
 		                                 menuA, menuNA);
 		widgets->push_back(widget);

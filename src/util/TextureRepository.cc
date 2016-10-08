@@ -67,7 +67,10 @@ bool TextureRepository::add(int index, SDL_Renderer* renderer, const std::string
 
 bool TextureRepository::add(int index, SDL_Renderer* renderer, const std::string& path, int width, int height) {
 	Texture* text = new Texture();
-	text->loadFromFile(renderer, path, width, height);
+	if (!text->loadFromFile(renderer, path, width, height)) {
+		delete text;
+		return false;
+	}
 	return add(index, text);
 }
 
