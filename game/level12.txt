@@ -2,7 +2,7 @@
 10
 50 40 60 80 90 94 99
 1.0
-music/pip-outofit.it
+music/pip-ruby.it
 sounds/click.ogg
 sounds/touch.ogg
 sounds/bomb.ogg
