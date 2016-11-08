@@ -6,6 +6,10 @@ occillo_DATA = \
 	background.png \
 	ball_silver.svg \
 	ball_blue.svg \
+	ball_l1.svg \
+	ball_l2.svg \
+	ball_l3.svg \
+	ball_l4.svg \
 	brick_blue.svg \
 	brick_fixed.svg \
 	brick_green.svg \
@@ -17,6 +21,7 @@ occillo_DATA = \
 	brick_red.svg \
 	brick_template.svg \
 	brick_yellow.svg \
+	brick_black.svg \
 	checkboxactive.svg \
 	checkboxinactive.svg \
 	occillo.svg \
