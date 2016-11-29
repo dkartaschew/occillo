@@ -8,7 +8,7 @@
     {% assign navigation_pages = site.html_pages | sort: 'navigation_weight' %}
     {% for p in navigation_pages %}
       {% if p.navigation_weight %}
-          <a href="{{ p.url }}" {% if p.url == page.url %}class="w3-indigo"{% else %}class="w3-black"{% endif %}>{{ p.navigation_menu }}</a>
+          <a href="{{ p.url | prepend: site.baseurl }}" {% if p.url == page.url %}class="w3-indigo"{% else %}class="w3-black"{% endif %}>{{ p.navigation_menu }}</a>
       {% endif %}
     {% endfor %}
   </div>
