@@ -10,7 +10,7 @@ See COPYING and AUTHORS for full license details.
 
 ## Features
 
-* 25 Levels.
+* 20 Levels.
 * Mouse, keyboard or gamepad control.
 * SVG graphics for hi-dpi displays.
 * Rocking soundtrack...
