@@ -47,7 +47,7 @@ will form an animated texture displayed at 10 frames per second. (The 10fps valu
 All level files are simple text files of the following format:
 
 * Line 1 = Level Name. Enclose in " to have the level name translated.
-* Line 2 = Number of points on hit of a destructable brick.
+* Line 2 = Number of points to award on hit of a destructable brick.
 * Line 3 = Probabilities on bonuses being applied for bricks. There are 7 values to be defined:
   * 100 - *x*, probability the brick will have a double score bonus.
   * 100 - *x*, probability the brick will have a triple score bonus
@@ -68,5 +68,36 @@ and entries 2+ are for bricks.
 
 ### Brick Data Format.
 
+Brick data is formatted as 1 line per in game brick row, with each brick being defined as two values in hex:
 
+* The brick texture, (0 for no brick)
+* Brick properties.
 
+The following brick properties values are currently supported:
+
+* 0x01 - The brick is a wall piece (non-destructable).
+* 0x02 - A brick will take 2 hits to destroy.
+* 0x03 - A brick will take 3 hits to destroy.
+* 0x04 - A brick will take 4 hits to destroy.
+* 0x05 - A brick will take 5 hits to destroy.
+* 0x10 - A brick when destroyed will offer 2x the base score. (See line 2)
+* 0x11 - A brick when destroyed will offer 3x the base score.
+* 0x12 - A brick when destroyed will offer 4x the base score. 
+* 0x13 - A brick when destroyed will offer 10x the base score. 
+* 0x14 - A brick when destroyed will offer 100x the base score.
+* 0x80 - A brick when destroyed will grant the player an extra life.
+* 0x81 - A brick when destoryed will also destroy any other destructable bricks immediately surrounding it.
+* 0x82 - A brick when destroyed will also destroy all other destructable bricks.
+
+For example, a brick defined as:
+
+* 0304 - Use the third brick texture, and require 4 hits to destroy.
+* 0101 - Use the first birck texture, and is a wall
+* 0481 - Use the fourth brick texture, and when hit will destroy an other destructable bricks that immediately
+surround it.
+* 0000 - No brick.
+* 0082 - No brick - The brick properties are ignored.
+
+Note: If the texture id doesn't match a defined texture, it will be treated as no brick. If the actual texture is 
+missing or can't be loaded/renendered, then the brick will still be activated, but with a fill-in plain colour texture
+of random colour.
