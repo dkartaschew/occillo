@@ -17,6 +17,7 @@ game/level15.txt.h
 game/level16.txt.h
 game/level17.txt.h
 game/level18.txt.h
+game/level19.txt.h
 
 # List of source files which contain translatable strings.
 src/main.cc
