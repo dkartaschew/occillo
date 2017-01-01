@@ -1,7 +1,7 @@
 "Gems"
 10
 50 40 60 80 90 94 99
-1.0
+1.5
 music/pip-majordisappointment.it
 sounds/click.ogg
 sounds/touch.ogg

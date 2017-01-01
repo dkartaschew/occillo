@@ -22,7 +22,8 @@ occillo_DATA = \
 	level16.txt \
 	level17.txt \
 	level18.txt \
-	level19.txt
+	level19.txt \
+	level20.txt
 
 clean:
 	rm -f *.h
