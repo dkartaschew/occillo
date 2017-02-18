@@ -20,7 +20,9 @@
 #define BOX_H
 
 #ifdef _WIN32
-#define NOMINMAX
+#ifndef NOMINMAX
+#define NOMINMAX 1
+#endif
 #endif
 
 #include <cmath>

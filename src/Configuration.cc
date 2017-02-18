@@ -42,6 +42,7 @@ Configuration::Configuration() {
 	menuNonFocusAlpha = OCCILLO_DEFAULT_MENUNONFOCUSALPHA;
 #ifdef _WIN32
 	registryDataPath = getInstallPath();
+        g_info("%s[%d] : Installation Path: %s", __FILE__, __LINE__, registryDataPath.c_str());
 #else
 	registryDataPath = "";
 #endif
@@ -458,23 +459,37 @@ std::string getInstallPath() {
 	// Check HKCU, and HKLM for path value.
 	HKEY hKey;
 	LONG lRes = RegOpenKeyExA(HKEY_CURRENT_USER, OCCILLO_REGISTRY, 0, KEY_READ, &hKey);
-	if (hKey != ERROR_SUCCESS) {
-		RegCloseKey(&hKey);
+#if DEBUG
+        g_info("%s[%d] : Installation Path: lRes %d", __FILE__, __LINE__, lRes);
+#endif
+	if (lRes != ERROR_SUCCESS) {
+		RegCloseKey(hKey);
+#if DEBUG
+                g_info("%s[%d] : Installation Path: HKEY_CURRENT_USER failed", __FILE__, __LINE__);
+#endif
 		lRes = RegOpenKeyExA(HKEY_LOCAL_MACHINE, OCCILLO_REGISTRY, 0, KEY_READ, &hKey);
-		if (lRes != ERROR_SUCCES) {
-			RegCloseKey(&hKey);
+		if (lRes != ERROR_SUCCESS) {
+#if DEBUG
+                        g_info("%s[%d] : Installation Path: HKEY_LOCAL_MACHINE failed", __FILE__, __LINE__);
+#endif
+			RegCloseKey(hKey);
 			return "";
 		}
 	}
 	// We should have a key...
 	std::string strValue = "";
-	CHAR szBuffer[512];
+	CHAR szBuffer[8192];
 	DWORD dwBufferSize = sizeof(szBuffer);
 	ULONG nError = RegQueryValueExA(hKey, OCCILLO_REGISTRY_PATH, 0, NULL, (LPBYTE)szBuffer, &dwBufferSize);
+#if DEBUG
+        g_info("%s[%d] : Installation Path: hKey %d", __FILE__, __LINE__, hKey);
+        g_info("%s[%d] : Installation Path: Key code %d", __FILE__, __LINE__, nError);
+        g_info("%s[%d] : Installation Path: Key %s", __FILE__, __LINE__, &szBuffer);
+#endif
 	if (ERROR_SUCCESS == nError) {
-		strValue = szBuffer;
+		strValue = std::string(szBuffer);
 	}
-	RegCloseKey(&hKey);
+	RegCloseKey(hKey);
 	return strValue;
 }
 #endif
